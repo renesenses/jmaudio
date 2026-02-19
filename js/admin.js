@@ -55,19 +55,11 @@
   }
 
   function fetchDataFromGitHub() {
-    var url = API_BASE + '/repos/' + REPO + '/contents/' + FILE_PATH;
-    var hdrs = apiHeaders();
-    console.log('[ADMIN DEBUG] Fetching:', url);
-    console.log('[ADMIN DEBUG] Token length:', token.length, 'starts with:', token.substring(0, 6));
-    return fetch(url, { headers: hdrs })
+    return fetch(API_BASE + '/repos/' + REPO + '/contents/' + FILE_PATH, {
+      headers: apiHeaders()
+    })
     .then(function (res) {
-      console.log('[ADMIN DEBUG] Response status:', res.status);
-      if (!res.ok) {
-        return res.text().then(function (body) {
-          console.error('[ADMIN DEBUG] Error body:', body);
-          throw new Error('HTTP ' + res.status + ' — ' + body);
-        });
-      }
+      if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
     })
     .then(function (file) {
@@ -92,8 +84,8 @@
       .then(function (data) {
         currentData = data;
         localStorage.setItem('jmaudio_token', token);
-        loginScreen.hidden = true;
-        adminPanel.hidden = false;
+        loginScreen.style.display = 'none';
+        adminPanel.style.display = 'block';
         populateAllForms(data);
       })
       .catch(function (err) {
@@ -112,8 +104,8 @@
     currentData = null;
     currentSha = '';
     localStorage.removeItem('jmaudio_token');
-    adminPanel.hidden = true;
-    loginScreen.hidden = false;
+    adminPanel.style.display = 'none';
+    loginScreen.style.display = 'flex';
     tokenInput.value = '';
   }
 
