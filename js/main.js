@@ -47,7 +47,11 @@
         '<h3 class="marques-category-title">' + cat.name + '</h3>' +
         '<div class="marques-grid">';
       cat.brands.forEach(function (brand) {
-        html += '<span class="marque">' + brand + '</span>';
+        if (brand.url) {
+          html += '<a href="' + brand.url + '" class="marque" target="_blank" rel="noopener">' + brand.name + '</a>';
+        } else {
+          html += '<span class="marque">' + brand.name + '</span>';
+        }
       });
       html += '</div></div>';
     });

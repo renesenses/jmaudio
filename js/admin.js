@@ -309,9 +309,39 @@
     block.innerHTML =
       '<div class="block-header"><h3>' + escHtml(cat.name || 'Catégorie ' + (index + 1)) + '</h3><button class="btn btn-danger btn-remove-marques-cat">Supprimer</button></div>' +
       '<div class="form-group"><label>Nom de la catégorie</label><input type="text" class="marques-cat-name" value="' + escAttr(cat.name) + '"></div>' +
-      '<div class="form-group"><label>Marques (une par ligne)</label><textarea class="marques-cat-brands" rows="4">' + escHtml(cat.brands.join('\n')) + '</textarea></div>';
+      '<div class="nested-list marques-brands-list"></div>' +
+      '<button class="btn btn-add btn-add-brand">+ Ajouter une marque</button>';
 
     block.querySelector('.btn-remove-marques-cat').addEventListener('click', function () {
+      block.remove();
+    });
+
+    var brandsList = block.querySelector('.marques-brands-list');
+    if (cat.brands) {
+      cat.brands.forEach(function (brand, j) {
+        brandsList.appendChild(createBrandBlock(brand, j));
+      });
+    }
+
+    block.querySelector('.btn-add-brand').addEventListener('click', function () {
+      var count = brandsList.children.length;
+      brandsList.appendChild(createBrandBlock({ name: '', url: '' }, count));
+    });
+
+    return block;
+  }
+
+  function createBrandBlock(brand, index) {
+    var block = document.createElement('div');
+    block.className = 'nested-block';
+    block.innerHTML =
+      '<div class="block-header"><h4>' + escHtml(brand.name || 'Marque ' + (index + 1)) + '</h4><button class="btn btn-danger btn-remove-brand">Suppr.</button></div>' +
+      '<div class="form-row">' +
+        '<div class="form-group"><label>Nom</label><input type="text" class="brand-name" value="' + escAttr(brand.name) + '"></div>' +
+        '<div class="form-group"><label>URL (vide si pas de lien)</label><input type="text" class="brand-url" value="' + escAttr(brand.url) + '"></div>' +
+      '</div>';
+
+    block.querySelector('.btn-remove-brand').addEventListener('click', function () {
       block.remove();
     });
     return block;
@@ -319,11 +349,14 @@
 
   function collectMarquesCategories() {
     var categories = [];
-    document.querySelectorAll('#marques-categories-list .repeatable-block').forEach(function (block) {
-      var brands = block.querySelector('.marques-cat-brands').value
-        .split('\n')
-        .map(function (b) { return b.trim(); })
-        .filter(function (b) { return b.length > 0; });
+    document.querySelectorAll('#marques-categories-list > .repeatable-block').forEach(function (block) {
+      var brands = [];
+      block.querySelectorAll('.nested-block').forEach(function (bb) {
+        brands.push({
+          name: bb.querySelector('.brand-name').value,
+          url: bb.querySelector('.brand-url').value
+        });
+      });
       categories.push({
         name: block.querySelector('.marques-cat-name').value,
         brands: brands

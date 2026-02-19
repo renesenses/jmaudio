@@ -362,6 +362,15 @@ img {
   color: var(--cream);
 }
 
+a.marque {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a.marque:hover {
+  color: var(--gold-light);
+}
+
 /* ============================================
    Services
    ============================================ */

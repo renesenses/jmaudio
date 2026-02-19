@@ -29,11 +29,38 @@
     "sectionTitle": "Nos marques",
     "intro": "Une sélection exigeante de manufactures partageant notre quête de l'excellence sonore.",
     "categories": [
-      { "name": "Électronique", "brands": ["Naim", "Pass Labs", "Luxman", "Audio Research", "Dan D'Agostino", "Accuphase"] },
-      { "name": "Platines & Sources", "brands": ["Rega", "Linn", "dCS", "Technics"] },
-      { "name": "Enceintes", "brands": ["Wilson Benesch", "Focal", "Harbeth", "ProAc", "Sonus faber"] },
-      { "name": "Câbles & Accessoires", "brands": ["Naim", "Chord Company", "Nordost", "Furutech"] },
-      { "name": "Mobilier & Alimentation", "brands": ["Finite Elemente", "Isotek", "Solidsteel"] }
+      { "name": "Électronique", "brands": [
+        { "name": "Naim", "url": "" },
+        { "name": "Pass Labs", "url": "" },
+        { "name": "Luxman", "url": "" },
+        { "name": "Audio Research", "url": "" },
+        { "name": "Dan D'Agostino", "url": "" },
+        { "name": "Accuphase", "url": "" }
+      ]},
+      { "name": "Platines & Sources", "brands": [
+        { "name": "Rega", "url": "" },
+        { "name": "Linn", "url": "" },
+        { "name": "dCS", "url": "" },
+        { "name": "Technics", "url": "" }
+      ]},
+      { "name": "Enceintes", "brands": [
+        { "name": "Wilson Benesch", "url": "" },
+        { "name": "Focal", "url": "" },
+        { "name": "Harbeth", "url": "" },
+        { "name": "ProAc", "url": "" },
+        { "name": "Sonus faber", "url": "" }
+      ]},
+      { "name": "Câbles & Accessoires", "brands": [
+        { "name": "Naim", "url": "" },
+        { "name": "Chord Company", "url": "" },
+        { "name": "Nordost", "url": "" },
+        { "name": "Furutech", "url": "" }
+      ]},
+      { "name": "Mobilier & Alimentation", "brands": [
+        { "name": "Finite Elemente", "url": "" },
+        { "name": "Isotek", "url": "" },
+        { "name": "Solidsteel", "url": "" }
+      ]}
     ]
   },
   "services": {
