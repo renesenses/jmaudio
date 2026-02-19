@@ -282,6 +282,19 @@ img {
 /* ============================================
    Présentation
    ============================================ */
+.presentation-image {
+  width: 100%;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  overflow: hidden;
+}
+
+.presentation-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .presentation-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -554,6 +567,90 @@ a.marque:hover {
   background: rgba(201, 169, 110, 0.1);
   border-color: var(--gold);
   color: var(--gold);
+}
+
+/* ============================================
+   Actualités (News)
+   ============================================ */
+.news-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  overflow: hidden;
+}
+
+.news-featured-img {
+  max-height: 300px;
+  overflow: hidden;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-featured-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-featured-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-variant: small-caps;
+  margin-bottom: 0.5rem;
+}
+
+.news-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.news-excerpt {
+  color: var(--cream-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.news-featured-body-full {
+  grid-column: 1 / -1;
+}
+
+.news-older {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.news-older-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  transition: border-color var(--transition);
+}
+
+.news-older-card:hover {
+  border-color: rgba(201, 169, 110, 0.3);
+}
+
+.news-older-card .news-title {
+  font-size: 1.1rem;
+  margin-bottom: 0;
 }
 
 /* ============================================
@@ -960,6 +1057,14 @@ a.marque:hover {
   .occasions-grid-compact {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .news-featured {
+    grid-template-columns: 1fr;
+  }
+
+  .news-older {
+    grid-template-columns: 1fr;
   }
 
   .contact-grid {

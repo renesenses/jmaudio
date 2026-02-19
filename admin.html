@@ -56,6 +56,7 @@
       <button class="tab" data-tab="presentation">Présentation</button>
       <button class="tab" data-tab="marques">Marques</button>
       <button class="tab" data-tab="services">Services</button>
+      <button class="tab" data-tab="news">Actualités</button>
       <button class="tab" data-tab="occasions">Occasions</button>
       <button class="tab" data-tab="contact">Contact</button>
     </nav>
@@ -119,6 +120,17 @@
         </div>
         <div id="services-cards-list" class="repeatable-list"></div>
         <button class="btn btn-add" id="add-services-card">+ Ajouter un service</button>
+      </div>
+
+      <!-- Actualités -->
+      <div class="tab-panel" id="panel-news">
+        <h2>Section Actualités</h2>
+        <div class="form-group">
+          <label>Titre de section</label>
+          <input type="text" id="news-title-input" data-path="news.sectionTitle">
+        </div>
+        <div id="news-items-list" class="repeatable-list"></div>
+        <button class="btn btn-add" id="add-news-item">+ Ajouter une actualité</button>
       </div>
 
       <!-- Occasions -->

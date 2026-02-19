@@ -25,6 +25,17 @@
     var p = data.presentation;
     document.getElementById('presentation-title').textContent = p.sectionTitle;
 
+    var container = document.getElementById('presentation-cards').parentNode;
+    var grid = document.getElementById('presentation-cards');
+
+    // Insert auditorium image before the cards grid
+    if (p.imageUrl) {
+      var imgDiv = document.createElement('div');
+      imgDiv.className = 'presentation-image animate';
+      imgDiv.innerHTML = '<img src="' + p.imageUrl + '" alt="Auditorium JM Audio" loading="lazy">';
+      container.insertBefore(imgDiv, grid);
+    }
+
     var html = '';
     p.cards.forEach(function (card) {
       html += '<div class="presentation-card animate">' +
@@ -33,7 +44,7 @@
         '<p>' + card.description + '</p>' +
         '</div>';
     });
-    document.getElementById('presentation-cards').innerHTML = html;
+    grid.innerHTML = html;
   }
 
   function renderMarques(data) {
@@ -118,6 +129,60 @@
     document.getElementById('occasions-cta').innerHTML =
       '<p>' + o.ctaText + '</p>' +
       '<a href="#contact" class="occasions-btn">' + o.ctaButtonText + '</a>';
+  }
+
+  function formatDateFr(dateStr) {
+    var months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+    var parts = dateStr.split('-');
+    var day = parseInt(parts[2], 10);
+    var month = months[parseInt(parts[1], 10) - 1];
+    var year = parts[0];
+    return day + ' ' + month + ' ' + year;
+  }
+
+  function renderNews(data) {
+    var section = document.getElementById('news');
+    if (!data.news || !data.news.items || data.news.items.length === 0) {
+      section.style.display = 'none';
+      return;
+    }
+
+    document.getElementById('news-title').textContent = data.news.sectionTitle;
+
+    // Sort by date descending
+    var items = data.news.items.slice().sort(function (a, b) {
+      return b.date.localeCompare(a.date);
+    });
+
+    var html = '';
+
+    // Featured (latest) news
+    var featured = items[0];
+    html += '<div class="news-featured animate">';
+    if (featured.imageUrl) {
+      html += '<div class="news-featured-img"><img src="' + featured.imageUrl + '" alt="' + featured.title + '" loading="lazy"></div>';
+    }
+    html += '<div class="news-featured-body' + (featured.imageUrl ? '' : ' news-featured-body-full') + '">' +
+      '<p class="news-date">' + formatDateFr(featured.date) + '</p>' +
+      '<h3 class="news-title">' + featured.title + '</h3>' +
+      '<p class="news-excerpt">' + featured.content + '</p>' +
+      '</div></div>';
+
+    // Older news (up to 2)
+    if (items.length > 1) {
+      html += '<div class="news-older">';
+      var limit = Math.min(items.length, 3);
+      for (var i = 1; i < limit; i++) {
+        html += '<div class="news-older-card animate">' +
+          '<p class="news-date">' + formatDateFr(items[i].date) + '</p>' +
+          '<h3 class="news-title">' + items[i].title + '</h3>' +
+          '</div>';
+      }
+      html += '</div>';
+    }
+
+    document.getElementById('news-content').innerHTML = html;
   }
 
   function renderContact(data) {
@@ -211,6 +276,7 @@
       renderPresentation(data);
       renderMarques(data);
       renderServices(data);
+      renderNews(data);
       renderOccasions(data);
       renderContact(data);
       initUI();

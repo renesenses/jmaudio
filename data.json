@@ -7,6 +7,7 @@
   },
   "presentation": {
     "sectionTitle": "Un lieu dédié à l'écoute",
+    "imageUrl": "img/auditorium.jpg",
     "cards": [
       {
         "number": "2",
@@ -32,114 +33,60 @@
       {
         "name": "Électronique",
         "brands": [
-          {
-            "name": "Naim",
-            "url": "https://www.naimaudio.com/fr"
-          },
-          {
-            "name": "Pass Labs",
-            "url": "https://passlabs.fr/"
-          },
-          {
-            "name": "Luxman",
-            "url": "https://www.hamysound.com/luxman.htm"
-          },
-          {
-            "name": "Audio Research",
-            "url": "https://europe-audio-diffusion.com/audio-research/"
-          },
-          {
-            "name": "Dan D'Agostino",
-            "url": "https://europe-audio-diffusion.com/dan-dagostino/"
-          },
-          {
-            "name": "Accuphase",
-            "url": "https://www.accuphase.fr/"
-          }
+          { "name": "Arcam", "url": "" },
+          { "name": "Audio Analogue", "url": "" },
+          { "name": "Bluesound", "url": "" },
+          { "name": "Cambridge Audio", "url": "" },
+          { "name": "EverSolo", "url": "" },
+          { "name": "Lindemann", "url": "" },
+          { "name": "Luxman", "url": "https://www.hamysound.com/luxman.htm" },
+          { "name": "Métronome Technologie", "url": "" },
+          { "name": "Naim", "url": "https://www.naimaudio.com/fr" },
+          { "name": "Pass Labs", "url": "https://passlabs.fr/" }
         ]
       },
       {
         "name": "Platines & Sources",
         "brands": [
-          {
-            "name": "Rega",
-            "url": "https://www.soundandcolors.com/marques/rega/"
-          },
-          {
-            "name": "Linn",
-            "url": ""
-          },
-          {
-            "name": "dCS",
-            "url": ""
-          },
-          {
-            "name": "Technics",
-            "url": ""
-          }
+          { "name": "Audio-Technica", "url": "" },
+          { "name": "Pro-Ject", "url": "" },
+          { "name": "Rega", "url": "https://www.soundandcolors.com/marques/rega/" }
         ]
       },
       {
         "name": "Enceintes",
         "brands": [
-          {
-            "name": "Wilson Benesch",
-            "url": ""
-          },
-          {
-            "name": "Focal",
-            "url": ""
-          },
-          {
-            "name": "Harbeth",
-            "url": ""
-          },
-          {
-            "name": "ProAc",
-            "url": ""
-          },
-          {
-            "name": "Sonus faber",
-            "url": ""
-          }
+          { "name": "Acoustic Energy", "url": "" },
+          { "name": "EgglestonWorks", "url": "" },
+          { "name": "Monitor Audio", "url": "" },
+          { "name": "Piega", "url": "" },
+          { "name": "Totem", "url": "" },
+          { "name": "Wilson Benesch", "url": "" }
         ]
       },
       {
-        "name": "Câbles & Accessoires",
+        "name": "Câbles",
         "brands": [
-          {
-            "name": "Naim",
-            "url": ""
-          },
-          {
-            "name": "Chord Company",
-            "url": ""
-          },
-          {
-            "name": "Nordost",
-            "url": ""
-          },
-          {
-            "name": "Furutech",
-            "url": ""
-          }
+          { "name": "Absolue Créations", "url": "" },
+          { "name": "AudioQuest", "url": "" },
+          { "name": "Clarus", "url": "" },
+          { "name": "Tributaries", "url": "" },
+          { "name": "Tellurium Q", "url": "" }
         ]
       },
       {
-        "name": "Mobilier & Alimentation",
+        "name": "Meubles & Accessoires",
         "brands": [
-          {
-            "name": "Finite Elemente",
-            "url": ""
-          },
-          {
-            "name": "Isotek",
-            "url": ""
-          },
-          {
-            "name": "Solidsteel",
-            "url": ""
-          }
+          { "name": "Atacama", "url": "" },
+          { "name": "Solid Tech", "url": "" }
+        ]
+      },
+      {
+        "name": "Traitement secteur",
+        "brands": [
+          { "name": "IsoTek", "url": "" },
+          { "name": "GigaWatt", "url": "" },
+          { "name": "Torus", "url": "" }
         ]
       }
     ]
@@ -180,7 +127,7 @@
             "model": "Model 125 — Bloc de puissance stéréo",
             "detail": "Très bon état — Carton, documentation — Acheté en 2015",
             "price": "2 250 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/ec/imp_photo_108210_1754139035.jpg",
+            "imageUrl": "img/occasions/jeff-rowland-model-125.jpg",
             "description": "",
             "images": []
           },
@@ -189,7 +136,7 @@
             "model": "Uniti1 — Tout-en-un (écran neuf)",
             "detail": "Complet — Carton, documentation, facture 2012 — 1 seul propriétaire",
             "price": "650 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/97/imp_photo_104260_1752324670.jpg",
+            "imageUrl": "img/occasions/naim-uniti1.jpg",
             "description": "",
             "images": []
           },
@@ -198,7 +145,7 @@
             "model": "Alliance 270 — Amplificateur intégré",
             "detail": "Très bon état — Entrée phono, télécommande — Facture 03/2002",
             "price": "750 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/a4/imp_photo_204_1738080212.jpg",
+            "imageUrl": "img/occasions/euphya-alliance-270.jpg",
             "description": "",
             "images": []
           },
@@ -207,7 +154,7 @@
             "model": "34 + 306 + FM4 + Meuble — Ensemble complet",
             "detail": "Très bon état — Documentation complète",
             "price": "730 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/74/imp_photo_104235_1754039956.jpg",
+            "imageUrl": "img/occasions/quad-34-306-fm4.jpg",
             "description": "",
             "images": []
           }
@@ -223,7 +170,7 @@
             "model": "Kandy K3 — Lecteur CD anthracite",
             "detail": "Comme neuf (07/2021) — Carton, télécommande",
             "price": "950 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/2c/imp_photo_108707_1759308123.jpg",
+            "imageUrl": "img/occasions/roksan-kandy-k3.jpg",
             "description": "",
             "images": []
           },
@@ -266,7 +213,7 @@
             "model": "Orféo Suprême V2 — Enceintes colonne",
             "detail": "Très bon état — Cartons — Facture 05/2020",
             "price": "4 300 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/d8/prod_photo1_204_1758198991.jpg",
+            "imageUrl": "img/occasions/jmr-orfeo-supreme-v2.jpg",
             "description": "",
             "images": []
           },
@@ -275,7 +222,7 @@
             "model": "Response 1 — Enceintes bibliothèque",
             "detail": "Très bon état — Première série, filtres extérieurs — Supports & câbles AudioQuest Slate inclus",
             "price": "1 100 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/5a/imp_photo_204_1758199216.jpg",
+            "imageUrl": "img/occasions/proac-response-1.jpg",
             "description": "",
             "images": []
           }
@@ -359,5 +306,16 @@
     "hours": "Mardi – Vendredi : 14h – 19h\nSamedi : 10h – 12h / 14h – 19h\nÉcoute sur RDV les matins du mardi au vendredi",
     "phone": "03 80 77 04 91",
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43364.52390784498!2d5.0041!3d47.3220!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f29d8cefb8e0fd%3A0xb02e1ca256e1cdb!2sDijon!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+  },
+  "news": {
+    "sectionTitle": "Actualités",
+    "items": [
+      {
+        "date": "2026-02-15",
+        "title": "Nouvelles marques en audition",
+        "content": "Nous sommes heureux de vous accueillir pour découvrir nos nouvelles références en électronique et enceintes. Prenez rendez-vous pour une séance d'écoute personnalisée dans nos auditoriums.",
+        "imageUrl": ""
+      }
+    ]
   }
 }

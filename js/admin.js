@@ -214,6 +214,9 @@
     renderPresentationCards(data.presentation.cards);
     renderMarquesCategories(data.marques.categories);
     renderServicesCards(data.services.cards);
+    if (data.news && data.news.items) {
+      renderNewsItems(data.news.items);
+    }
     renderOccasionsCategories(data.occasions.categories);
   }
 
@@ -247,6 +250,8 @@
     currentData.presentation.cards = collectPresentationCards();
     currentData.marques.categories = collectMarquesCategories();
     currentData.services.cards = collectServicesCards();
+    if (!currentData.news) currentData.news = { sectionTitle: 'Actualités', items: [] };
+    currentData.news.items = collectNewsItems();
     currentData.occasions.categories = collectOccasionsCategories();
   }
 
@@ -641,6 +646,49 @@
   }
 
   /* =========================================
+     News Items
+     ========================================= */
+
+  function renderNewsItems(items) {
+    var list = document.getElementById('news-items-list');
+    list.innerHTML = '';
+    items.forEach(function (item, i) {
+      list.appendChild(createNewsBlock(item, i));
+    });
+  }
+
+  function createNewsBlock(item, index) {
+    var block = document.createElement('div');
+    block.className = 'repeatable-block';
+    block.innerHTML =
+      '<div class="block-header"><h3>' + escHtml(item.title || 'Actualité ' + (index + 1)) + '</h3><button class="btn btn-danger btn-remove-news">Supprimer</button></div>' +
+      '<div class="form-row">' +
+        '<div class="form-group"><label>Date</label><input type="date" class="news-date" value="' + escAttr(item.date) + '"></div>' +
+        '<div class="form-group"><label>Titre</label><input type="text" class="news-item-title" value="' + escAttr(item.title) + '"></div>' +
+      '</div>' +
+      '<div class="form-group"><label>Contenu</label><textarea class="news-content" rows="3">' + escHtml(item.content) + '</textarea></div>' +
+      '<div class="form-group"><label>URL image (optionnel)</label><input type="text" class="news-image" value="' + escAttr(item.imageUrl) + '"></div>';
+
+    block.querySelector('.btn-remove-news').addEventListener('click', function () {
+      block.remove();
+    });
+    return block;
+  }
+
+  function collectNewsItems() {
+    var items = [];
+    document.querySelectorAll('#news-items-list .repeatable-block').forEach(function (block) {
+      items.push({
+        date: block.querySelector('.news-date').value,
+        title: block.querySelector('.news-item-title').value,
+        content: block.querySelector('.news-content').value,
+        imageUrl: block.querySelector('.news-image').value
+      });
+    });
+    return items;
+  }
+
+  /* =========================================
      "Add" buttons for top-level repeatables
      ========================================= */
 
@@ -661,6 +709,13 @@
       var list = document.getElementById('services-cards-list');
       var count = list.children.length;
       list.appendChild(createServicesCardBlock({ icon: 'headphones', title: '', description: '' }, count));
+    });
+
+    document.getElementById('add-news-item').addEventListener('click', function () {
+      var list = document.getElementById('news-items-list');
+      var count = list.children.length;
+      var today = new Date().toISOString().split('T')[0];
+      list.appendChild(createNewsBlock({ date: today, title: '', content: '', imageUrl: '' }, count));
     });
 
     document.getElementById('add-occasions-category').addEventListener('click', function () {
