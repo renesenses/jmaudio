@@ -55,11 +55,19 @@
   }
 
   function fetchDataFromGitHub() {
-    return fetch(API_BASE + '/repos/' + REPO + '/contents/' + FILE_PATH, {
-      headers: apiHeaders()
-    })
+    var url = API_BASE + '/repos/' + REPO + '/contents/' + FILE_PATH;
+    var hdrs = apiHeaders();
+    console.log('[ADMIN DEBUG] Fetching:', url);
+    console.log('[ADMIN DEBUG] Token length:', token.length, 'starts with:', token.substring(0, 6));
+    return fetch(url, { headers: hdrs })
     .then(function (res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
+      console.log('[ADMIN DEBUG] Response status:', res.status);
+      if (!res.ok) {
+        return res.text().then(function (body) {
+          console.error('[ADMIN DEBUG] Error body:', body);
+          throw new Error('HTTP ' + res.status + ' — ' + body);
+        });
+      }
       return res.json();
     })
     .then(function (file) {
