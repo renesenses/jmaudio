@@ -47,8 +47,9 @@
   }
 
   function apiHeaders() {
+    var prefix = token.startsWith('github_pat_') ? 'Bearer' : 'token';
     return {
-      'Authorization': 'token ' + token,
+      'Authorization': prefix + ' ' + token,
       'Accept': 'application/vnd.github.v3+json'
     };
   }
