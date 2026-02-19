@@ -29,38 +29,119 @@
     "sectionTitle": "Nos marques",
     "intro": "Une sélection exigeante de manufactures partageant notre quête de l'excellence sonore.",
     "categories": [
-      { "name": "Électronique", "brands": [
-        { "name": "Naim", "url": "" },
-        { "name": "Pass Labs", "url": "" },
-        { "name": "Luxman", "url": "" },
-        { "name": "Audio Research", "url": "" },
-        { "name": "Dan D'Agostino", "url": "" },
-        { "name": "Accuphase", "url": "" }
-      ]},
-      { "name": "Platines & Sources", "brands": [
-        { "name": "Rega", "url": "" },
-        { "name": "Linn", "url": "" },
-        { "name": "dCS", "url": "" },
-        { "name": "Technics", "url": "" }
-      ]},
-      { "name": "Enceintes", "brands": [
-        { "name": "Wilson Benesch", "url": "" },
-        { "name": "Focal", "url": "" },
-        { "name": "Harbeth", "url": "" },
-        { "name": "ProAc", "url": "" },
-        { "name": "Sonus faber", "url": "" }
-      ]},
-      { "name": "Câbles & Accessoires", "brands": [
-        { "name": "Naim", "url": "" },
-        { "name": "Chord Company", "url": "" },
-        { "name": "Nordost", "url": "" },
-        { "name": "Furutech", "url": "" }
-      ]},
-      { "name": "Mobilier & Alimentation", "brands": [
-        { "name": "Finite Elemente", "url": "" },
-        { "name": "Isotek", "url": "" },
-        { "name": "Solidsteel", "url": "" }
-      ]}
+      {
+        "name": "Électronique",
+        "brands": [
+          {
+            "name": "Naim",
+            "url": "https://www.naimaudio.com/fr"
+          },
+          {
+            "name": "Pass Labs",
+            "url": "https://passlabs.fr/"
+          },
+          {
+            "name": "Luxman",
+            "url": "https://www.hamysound.com/luxman.htm"
+          },
+          {
+            "name": "Audio Research",
+            "url": "https://europe-audio-diffusion.com/audio-research/"
+          },
+          {
+            "name": "Dan D'Agostino",
+            "url": "https://europe-audio-diffusion.com/dan-dagostino/"
+          },
+          {
+            "name": "Accuphase",
+            "url": "https://www.accuphase.fr/"
+          }
+        ]
+      },
+      {
+        "name": "Platines & Sources",
+        "brands": [
+          {
+            "name": "Rega",
+            "url": "https://www.soundandcolors.com/marques/rega/"
+          },
+          {
+            "name": "Linn",
+            "url": ""
+          },
+          {
+            "name": "dCS",
+            "url": ""
+          },
+          {
+            "name": "Technics",
+            "url": ""
+          }
+        ]
+      },
+      {
+        "name": "Enceintes",
+        "brands": [
+          {
+            "name": "Wilson Benesch",
+            "url": ""
+          },
+          {
+            "name": "Focal",
+            "url": ""
+          },
+          {
+            "name": "Harbeth",
+            "url": ""
+          },
+          {
+            "name": "ProAc",
+            "url": ""
+          },
+          {
+            "name": "Sonus faber",
+            "url": ""
+          }
+        ]
+      },
+      {
+        "name": "Câbles & Accessoires",
+        "brands": [
+          {
+            "name": "Naim",
+            "url": ""
+          },
+          {
+            "name": "Chord Company",
+            "url": ""
+          },
+          {
+            "name": "Nordost",
+            "url": ""
+          },
+          {
+            "name": "Furutech",
+            "url": ""
+          }
+        ]
+      },
+      {
+        "name": "Mobilier & Alimentation",
+        "brands": [
+          {
+            "name": "Finite Elemente",
+            "url": ""
+          },
+          {
+            "name": "Isotek",
+            "url": ""
+          },
+          {
+            "name": "Solidsteel",
+            "url": ""
+          }
+        ]
+      }
     ]
   },
   "services": {
