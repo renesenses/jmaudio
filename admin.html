@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JM Audio — Administration</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-box">
+      <h1>JM Audio</h1>
+      <p class="login-subtitle">Administration du site</p>
+      <div class="login-field">
+        <label for="github-token">Personal Access Token GitHub</label>
+        <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
+      </div>
+      <button id="login-btn" class="btn btn-primary">Connexion</button>
+      <p id="login-error" class="login-error" hidden></p>
+      <details class="login-help">
+        <summary>Comment obtenir un token ?</summary>
+        <ol>
+          <li>Aller sur <strong>GitHub &gt; Settings &gt; Developer settings &gt; Personal access tokens &gt; Tokens (classic)</strong></li>
+          <li>Cliquer <strong>Generate new token (classic)</strong></li>
+          <li>Cocher le scope <strong>repo</strong> (accès complet aux repos)</li>
+          <li>Copier le token et le coller ci-dessus</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="admin-panel" class="admin-panel" hidden>
+
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <h1 class="admin-logo">JM Audio <span>Admin</span></h1>
+        <div class="admin-header-actions">
+          <span id="save-status" class="save-status"></span>
+          <button id="save-btn" class="btn btn-primary">Enregistrer</button>
+          <button id="logout-btn" class="btn btn-secondary">Déconnexion</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="admin-tabs" id="admin-tabs">
+      <button class="tab active" data-tab="hero">Hero</button>
+      <button class="tab" data-tab="presentation">Présentation</button>
+      <button class="tab" data-tab="marques">Marques</button>
+      <button class="tab" data-tab="services">Services</button>
+      <button class="tab" data-tab="occasions">Occasions</button>
+      <button class="tab" data-tab="contact">Contact</button>
+    </nav>
+
+    <!-- Tab Panels -->
+    <div class="admin-content">
+
+      <!-- Hero -->
+      <div class="tab-panel active" id="panel-hero">
+        <h2>Section Hero</h2>
+        <div class="form-group">
+          <label for="hero-subtitle">Sous-titre</label>
+          <input type="text" id="hero-subtitle-input" data-path="hero.subtitle">
+        </div>
+        <div class="form-group">
+          <label for="hero-title">Titre</label>
+          <input type="text" id="hero-title-input" data-path="hero.title">
+        </div>
+        <div class="form-group">
+          <label for="hero-emphasis">Titre (emphase/italique)</label>
+          <input type="text" id="hero-emphasis-input" data-path="hero.titleEmphasis">
+        </div>
+        <div class="form-group">
+          <label for="hero-cta">Texte du bouton</label>
+          <input type="text" id="hero-cta-input" data-path="hero.ctaText">
+        </div>
+      </div>
+
+      <!-- Présentation -->
+      <div class="tab-panel" id="panel-presentation">
+        <h2>Section Présentation</h2>
+        <div class="form-group">
+          <label>Titre de section</label>
+          <input type="text" id="presentation-title-input" data-path="presentation.sectionTitle">
+        </div>
+        <div id="presentation-cards-list" class="repeatable-list"></div>
+        <button class="btn btn-add" id="add-presentation-card">+ Ajouter une carte</button>
+      </div>
+
+      <!-- Marques -->
+      <div class="tab-panel" id="panel-marques">
+        <h2>Section Marques</h2>
+        <div class="form-group">
+          <label>Titre de section</label>
+          <input type="text" id="marques-title-input" data-path="marques.sectionTitle">
+        </div>
+        <div class="form-group">
+          <label>Introduction</label>
+          <textarea id="marques-intro-input" data-path="marques.intro" rows="2"></textarea>
+        </div>
+        <div id="marques-categories-list" class="repeatable-list"></div>
+        <button class="btn btn-add" id="add-marques-category">+ Ajouter une catégorie</button>
+      </div>
+
+      <!-- Services -->
+      <div class="tab-panel" id="panel-services">
+        <h2>Section Services</h2>
+        <div class="form-group">
+          <label>Titre de section</label>
+          <input type="text" id="services-title-input" data-path="services.sectionTitle">
+        </div>
+        <div id="services-cards-list" class="repeatable-list"></div>
+        <button class="btn btn-add" id="add-services-card">+ Ajouter un service</button>
+      </div>
+
+      <!-- Occasions -->
+      <div class="tab-panel" id="panel-occasions">
+        <h2>Section Occasions</h2>
+        <div class="form-group">
+          <label>Titre de section</label>
+          <input type="text" id="occasions-title-input" data-path="occasions.sectionTitle">
+        </div>
+        <div class="form-group">
+          <label>Introduction</label>
+          <textarea id="occasions-intro-input" data-path="occasions.intro" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Texte CTA</label>
+          <input type="text" id="occasions-cta-input" data-path="occasions.ctaText">
+        </div>
+        <div class="form-group">
+          <label>Texte bouton CTA</label>
+          <input type="text" id="occasions-cta-btn-input" data-path="occasions.ctaButtonText">
+        </div>
+        <div id="occasions-categories-list" class="repeatable-list"></div>
+        <button class="btn btn-add" id="add-occasions-category">+ Ajouter une catégorie</button>
+      </div>
+
+      <!-- Contact -->
+      <div class="tab-panel" id="panel-contact">
+        <h2>Section Contact</h2>
+        <div class="form-group">
+          <label>Titre de section</label>
+          <input type="text" id="contact-title-input" data-path="contact.sectionTitle">
+        </div>
+        <div class="form-group">
+          <label>Adresse (utiliser Entrée pour les retours à la ligne)</label>
+          <textarea id="contact-address-input" data-path="contact.address" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Horaires (utiliser Entrée pour les retours à la ligne)</label>
+          <textarea id="contact-hours-input" data-path="contact.hours" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Téléphone</label>
+          <input type="text" id="contact-phone-input" data-path="contact.phone">
+        </div>
+        <div class="form-group">
+          <label>URL iframe Google Maps</label>
+          <input type="text" id="contact-map-input" data-path="contact.mapEmbedUrl">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

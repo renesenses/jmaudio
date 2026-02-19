@@ -41,9 +41,9 @@
     <!-- Hero -->
     <section class="hero" id="hero">
       <div class="hero-content">
-        <p class="hero-subtitle">Hi-Fi & Home Cinéma haut de gamme — Dijon</p>
-        <h1>Écoutez&hellip;<br><em>la musique est devant vous</em></h1>
-        <a href="#presentation" class="hero-cta">Découvrir</a>
+        <p class="hero-subtitle" id="hero-subtitle"></p>
+        <h1 id="hero-title"></h1>
+        <a href="#presentation" class="hero-cta" id="hero-cta"></a>
       </div>
       <div class="hero-gradient"></div>
     </section>
@@ -52,26 +52,10 @@
     <section class="section" id="presentation">
       <div class="container">
         <div class="section-header animate">
-          <h2>Un lieu dédié à l'écoute</h2>
+          <h2 id="presentation-title"></h2>
           <div class="separator"></div>
         </div>
-        <div class="presentation-grid">
-          <div class="presentation-card animate">
-            <div class="presentation-number">2</div>
-            <h3>Auditoriums</h3>
-            <p>Deux salles d'écoute traitées acoustiquement, conçues pour révéler le potentiel de chaque système dans des conditions optimales.</p>
-          </div>
-          <div class="presentation-card animate">
-            <div class="presentation-number">4</div>
-            <h3>Zones d'écoute</h3>
-            <p>Quatre configurations distinctes — du système compact au grand système référence — pour trouver l'équilibre parfait entre performance et espace.</p>
-          </div>
-          <div class="presentation-card animate">
-            <div class="presentation-number">&infin;</div>
-            <h3>Passion</h3>
-            <p>Chaque écoute est une expérience unique. Nous prenons le temps de comprendre vos attentes pour vous guider vers le système qui vous ressemble.</p>
-          </div>
-        </div>
+        <div class="presentation-grid" id="presentation-cards"></div>
       </div>
     </section>
 
@@ -79,62 +63,11 @@
     <section class="section section-alt" id="marques">
       <div class="container">
         <div class="section-header animate">
-          <h2>Nos marques</h2>
+          <h2 id="marques-title"></h2>
           <div class="separator"></div>
-          <p class="section-intro">Une sélection exigeante de manufactures partageant notre quête de l'excellence sonore.</p>
+          <p class="section-intro" id="marques-intro"></p>
         </div>
-
-        <div class="marques-category animate">
-          <h3 class="marques-category-title">Électronique</h3>
-          <div class="marques-grid">
-            <span class="marque">Naim</span>
-            <span class="marque">Pass Labs</span>
-            <span class="marque">Luxman</span>
-            <span class="marque">Audio Research</span>
-            <span class="marque">Dan D'Agostino</span>
-            <span class="marque">Accuphase</span>
-          </div>
-        </div>
-
-        <div class="marques-category animate">
-          <h3 class="marques-category-title">Platines & Sources</h3>
-          <div class="marques-grid">
-            <span class="marque">Rega</span>
-            <span class="marque">Linn</span>
-            <span class="marque">dCS</span>
-            <span class="marque">Technics</span>
-          </div>
-        </div>
-
-        <div class="marques-category animate">
-          <h3 class="marques-category-title">Enceintes</h3>
-          <div class="marques-grid">
-            <span class="marque">Wilson Benesch</span>
-            <span class="marque">Focal</span>
-            <span class="marque">Harbeth</span>
-            <span class="marque">ProAc</span>
-            <span class="marque">Sonus faber</span>
-          </div>
-        </div>
-
-        <div class="marques-category animate">
-          <h3 class="marques-category-title">Câbles & Accessoires</h3>
-          <div class="marques-grid">
-            <span class="marque">Naim</span>
-            <span class="marque">Chord Company</span>
-            <span class="marque">Nordost</span>
-            <span class="marque">Furutech</span>
-          </div>
-        </div>
-
-        <div class="marques-category animate">
-          <h3 class="marques-category-title">Mobilier & Alimentation</h3>
-          <div class="marques-grid">
-            <span class="marque">Finite Elemente</span>
-            <span class="marque">Isotek</span>
-            <span class="marque">Solidsteel</span>
-          </div>
-        </div>
+        <div id="marques-categories"></div>
       </div>
     </section>
 
@@ -142,32 +75,10 @@
     <section class="section" id="services">
       <div class="container">
         <div class="section-header animate">
-          <h2>Services</h2>
+          <h2 id="services-title"></h2>
           <div class="separator"></div>
         </div>
-        <div class="services-grid">
-          <div class="service-card animate">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-            </div>
-            <h3>Écoute personnalisée</h3>
-            <p>Sessions d'écoute sur rendez-vous dans nos auditoriums. Prenez le temps de comparer, d'écouter vos propres morceaux, sans pression.</p>
-          </div>
-          <div class="service-card animate">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <h3>Livraison & Installation</h3>
-            <p>Livraison soignée partout en France. Installation et mise en service à domicile sur la région Bourgogne.</p>
-          </div>
-          <div class="service-card animate">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
-            <h3>Conseil sur mesure</h3>
-            <p>De la première écoute au système de référence, nous vous accompagnons dans la construction de votre installation, étape par étape.</p>
-          </div>
-        </div>
+        <div class="services-grid" id="services-cards"></div>
       </div>
     </section>
 
@@ -175,192 +86,12 @@
     <section class="section" id="occasions">
       <div class="container">
         <div class="section-header animate">
-          <h2>Occasions</h2>
+          <h2 id="occasions-title"></h2>
           <div class="separator"></div>
-          <p class="section-intro">Des appareils d'exception, sélectionnés et vérifiés par nos soins. Stock mis à jour régulièrement.</p>
+          <p class="section-intro" id="occasions-intro"></p>
         </div>
-
-        <!-- Électronique -->
-        <h3 class="occasions-category-title animate">Électronique</h3>
-        <div class="occasions-grid">
-          <article class="occasion-card animate">
-            <div class="occasion-img">
-              <img src="https://media.achat-ville.com/uploads/cotedor/Produit/ec/imp_photo_108210_1754139035.jpg" alt="Jeff Rowland Model 125" loading="lazy">
-            </div>
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Jeff Rowland</h3>
-              <p class="occasion-model">Model 125 — Bloc de puissance stéréo</p>
-              <p class="occasion-detail">Très bon état — Carton, documentation — Acheté en 2015</p>
-              <p class="occasion-price">2 250 &euro;</p>
-            </div>
-          </article>
-
-          <article class="occasion-card animate">
-            <div class="occasion-img">
-              <img src="https://media.achat-ville.com/uploads/cotedor/Produit/97/imp_photo_104260_1752324670.jpg" alt="Naim Uniti1" loading="lazy">
-            </div>
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Naim</h3>
-              <p class="occasion-model">Uniti1 — Tout-en-un (écran neuf)</p>
-              <p class="occasion-detail">Complet — Carton, documentation, facture 2012 — 1 seul propriétaire</p>
-              <p class="occasion-price">650 &euro;</p>
-            </div>
-          </article>
-
-          <article class="occasion-card animate">
-            <div class="occasion-img">
-              <img src="https://media.achat-ville.com/uploads/cotedor/Produit/a4/imp_photo_204_1738080212.jpg" alt="Euphya Alliance 270" loading="lazy">
-            </div>
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Euphya</h3>
-              <p class="occasion-model">Alliance 270 — Amplificateur intégré</p>
-              <p class="occasion-detail">Très bon état — Entrée phono, télécommande — Facture 03/2002</p>
-              <p class="occasion-price">750 &euro;</p>
-            </div>
-          </article>
-
-          <article class="occasion-card animate">
-            <div class="occasion-img">
-              <img src="https://media.achat-ville.com/uploads/cotedor/Produit/74/imp_photo_104235_1754039956.jpg" alt="Quad 34 + 306 + FM4" loading="lazy">
-            </div>
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Quad</h3>
-              <p class="occasion-model">34 + 306 + FM4 + Meuble — Ensemble complet</p>
-              <p class="occasion-detail">Très bon état — Documentation complète</p>
-              <p class="occasion-price">730 &euro;</p>
-            </div>
-          </article>
-        </div>
-
-        <!-- Sources -->
-        <h3 class="occasions-category-title animate">Sources</h3>
-        <div class="occasions-grid">
-          <article class="occasion-card animate">
-            <div class="occasion-img">
-              <img src="https://media.achat-ville.com/uploads/cotedor/Produit/2c/imp_photo_108707_1759308123.jpg" alt="Roksan Kandy K3" loading="lazy">
-            </div>
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Roksan</h3>
-              <p class="occasion-model">Kandy K3 — Lecteur CD anthracite</p>
-              <p class="occasion-detail">Comme neuf (07/2021) — Carton, télécommande</p>
-              <p class="occasion-price">950 &euro;</p>
-            </div>
-          </article>
-
-          <article class="occasion-card animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Thorens</h3>
-              <p class="occasion-model">TD316 — Platine vinyle</p>
-              <p class="occasion-detail">Très bon état — Cellule neuve AT VM95E, courroie neuve</p>
-              <p class="occasion-price">230 &euro;</p>
-            </div>
-          </article>
-
-          <article class="occasion-card animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Magnum Dynalab</h3>
-              <p class="occasion-model">FT-11 — Tuner FM</p>
-              <p class="occasion-detail">Bon état</p>
-              <p class="occasion-price">250 &euro;</p>
-            </div>
-          </article>
-        </div>
-
-        <!-- Enceintes -->
-        <h3 class="occasions-category-title animate">Enceintes <span class="occasions-note">(la paire)</span></h3>
-        <div class="occasions-grid">
-          <article class="occasion-card animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Wilson Benesch</h3>
-              <p class="occasion-model">Vector — Enceintes colonne</p>
-              <p class="occasion-detail">Parfait état — Cartons — Facture 02/2014</p>
-              <p class="occasion-price">5 800 &euro;</p>
-            </div>
-          </article>
-
-          <article class="occasion-card animate">
-            <div class="occasion-img">
-              <img src="https://media.achat-ville.com/uploads/cotedor/Produit/d8/prod_photo1_204_1758198991.jpg" alt="JMR Orféo Suprême V2" loading="lazy">
-            </div>
-            <div class="occasion-body">
-              <h3 class="occasion-brand">JMR</h3>
-              <p class="occasion-model">Orféo Suprême V2 — Enceintes colonne</p>
-              <p class="occasion-detail">Très bon état — Cartons — Facture 05/2020</p>
-              <p class="occasion-price">4 300 &euro;</p>
-            </div>
-          </article>
-
-          <article class="occasion-card animate">
-            <div class="occasion-img">
-              <img src="https://media.achat-ville.com/uploads/cotedor/Produit/5a/imp_photo_204_1758199216.jpg" alt="ProAc Response 1" loading="lazy">
-            </div>
-            <div class="occasion-body">
-              <h3 class="occasion-brand">ProAc</h3>
-              <p class="occasion-model">Response 1 — Enceintes bibliothèque</p>
-              <p class="occasion-detail">Très bon état — Première série, filtres extérieurs — Supports & câbles AudioQuest Slate inclus</p>
-              <p class="occasion-price">1 100 &euro;</p>
-            </div>
-          </article>
-        </div>
-
-        <!-- Câbles & Accessoires -->
-        <h3 class="occasions-category-title animate">Câbles & Accessoires</h3>
-        <div class="occasions-grid occasions-grid-compact">
-          <article class="occasion-card occasion-card-small animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">AirTech</h3>
-              <p class="occasion-model">Zero XLR 1m50</p>
-              <p class="occasion-price">1 600 &euro;</p>
-            </div>
-          </article>
-          <article class="occasion-card occasion-card-small animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">AirTech</h3>
-              <p class="occasion-model">Air RCA 2&times;1m</p>
-              <p class="occasion-price">800 &euro;</p>
-            </div>
-          </article>
-          <article class="occasion-card occasion-card-small animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">AirTech</h3>
-              <p class="occasion-model">Evo2 RCA 2&times;1m</p>
-              <p class="occasion-price">600 &euro;</p>
-            </div>
-          </article>
-          <article class="occasion-card occasion-card-small animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Vertere</h3>
-              <p class="occasion-model">Redline XLR 1m</p>
-              <p class="occasion-price">450 &euro;</p>
-            </div>
-          </article>
-          <article class="occasion-card occasion-card-small animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Cardas</h3>
-              <p class="occasion-model">Iridium XLR 1m</p>
-              <p class="occasion-price">190 &euro;</p>
-            </div>
-          </article>
-          <article class="occasion-card occasion-card-small animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Neodio</h3>
-              <p class="occasion-model">HP Origine L0 — 2&times;3m</p>
-              <p class="occasion-price">350 &euro;</p>
-            </div>
-          </article>
-          <article class="occasion-card occasion-card-small animate">
-            <div class="occasion-body">
-              <h3 class="occasion-brand">Crimson</h3>
-              <p class="occasion-model">HP 2&times;2m — Bananes</p>
-              <p class="occasion-price">250 &euro;</p>
-            </div>
-          </article>
-        </div>
-
-        <div class="occasions-cta animate">
-          <p>Ce stock évolue fréquemment. Contactez-nous pour connaître les disponibilités.</p>
-          <a href="#contact" class="occasions-btn">Nous contacter</a>
-        </div>
+        <div id="occasions-categories"></div>
+        <div class="occasions-cta animate" id="occasions-cta"></div>
       </div>
     </section>
 
@@ -368,39 +99,10 @@
     <section class="section section-alt" id="contact">
       <div class="container">
         <div class="section-header animate">
-          <h2>Nous rencontrer</h2>
+          <h2 id="contact-title"></h2>
           <div class="separator"></div>
         </div>
-        <div class="contact-grid">
-          <div class="contact-info animate">
-            <div class="contact-block">
-              <h3>Adresse</h3>
-              <p>JM Audio<br>2 rue Legouz Gerland<br>21000 Dijon</p>
-            </div>
-            <div class="contact-block">
-              <h3>Horaires</h3>
-              <p>Mardi – Vendredi : 14h – 19h<br>Samedi : 10h – 12h / 14h – 19h<br>Écoute sur RDV les matins du mardi au vendredi</p>
-            </div>
-            <div class="contact-block">
-              <h3>Contact</h3>
-              <p>
-                <a href="tel:+33380770491" class="contact-link">03 80 77 04 91</a>
-              </p>
-            </div>
-          </div>
-          <div class="contact-map animate">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43364.52390784498!2d5.0041!3d47.3220!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f29d8cefb8e0fd%3A0xb02e1ca256e1cdb!2sDijon!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
-              width="100%"
-              height="100%"
-              style="border:0; min-height: 300px;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Localisation JM Audio à Dijon">
-            </iframe>
-          </div>
-        </div>
+        <div class="contact-grid" id="contact-content"></div>
       </div>
     </section>
 

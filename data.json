@@ -1,0 +1,221 @@
+{
+  "hero": {
+    "subtitle": "Hi-Fi & Home Cinéma haut de gamme — Dijon",
+    "title": "Écoutez…",
+    "titleEmphasis": "la musique est devant vous",
+    "ctaText": "Découvrir"
+  },
+  "presentation": {
+    "sectionTitle": "Un lieu dédié à l'écoute",
+    "cards": [
+      {
+        "number": "2",
+        "title": "Auditoriums",
+        "description": "Deux salles d'écoute traitées acoustiquement, conçues pour révéler le potentiel de chaque système dans des conditions optimales."
+      },
+      {
+        "number": "4",
+        "title": "Zones d'écoute",
+        "description": "Quatre configurations distinctes — du système compact au grand système référence — pour trouver l'équilibre parfait entre performance et espace."
+      },
+      {
+        "number": "∞",
+        "title": "Passion",
+        "description": "Chaque écoute est une expérience unique. Nous prenons le temps de comprendre vos attentes pour vous guider vers le système qui vous ressemble."
+      }
+    ]
+  },
+  "marques": {
+    "sectionTitle": "Nos marques",
+    "intro": "Une sélection exigeante de manufactures partageant notre quête de l'excellence sonore.",
+    "categories": [
+      { "name": "Électronique", "brands": ["Naim", "Pass Labs", "Luxman", "Audio Research", "Dan D'Agostino", "Accuphase"] },
+      { "name": "Platines & Sources", "brands": ["Rega", "Linn", "dCS", "Technics"] },
+      { "name": "Enceintes", "brands": ["Wilson Benesch", "Focal", "Harbeth", "ProAc", "Sonus faber"] },
+      { "name": "Câbles & Accessoires", "brands": ["Naim", "Chord Company", "Nordost", "Furutech"] },
+      { "name": "Mobilier & Alimentation", "brands": ["Finite Elemente", "Isotek", "Solidsteel"] }
+    ]
+  },
+  "services": {
+    "sectionTitle": "Services",
+    "cards": [
+      {
+        "icon": "headphones",
+        "title": "Écoute personnalisée",
+        "description": "Sessions d'écoute sur rendez-vous dans nos auditoriums. Prenez le temps de comparer, d'écouter vos propres morceaux, sans pression."
+      },
+      {
+        "icon": "location",
+        "title": "Livraison & Installation",
+        "description": "Livraison soignée partout en France. Installation et mise en service à domicile sur la région Bourgogne."
+      },
+      {
+        "icon": "person",
+        "title": "Conseil sur mesure",
+        "description": "De la première écoute au système de référence, nous vous accompagnons dans la construction de votre installation, étape par étape."
+      }
+    ]
+  },
+  "occasions": {
+    "sectionTitle": "Occasions",
+    "intro": "Des appareils d'exception, sélectionnés et vérifiés par nos soins. Stock mis à jour régulièrement.",
+    "ctaText": "Ce stock évolue fréquemment. Contactez-nous pour connaître les disponibilités.",
+    "ctaButtonText": "Nous contacter",
+    "categories": [
+      {
+        "name": "Électronique",
+        "note": "",
+        "compact": false,
+        "products": [
+          {
+            "brand": "Jeff Rowland",
+            "model": "Model 125 — Bloc de puissance stéréo",
+            "detail": "Très bon état — Carton, documentation — Acheté en 2015",
+            "price": "2 250 €",
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/ec/imp_photo_108210_1754139035.jpg"
+          },
+          {
+            "brand": "Naim",
+            "model": "Uniti1 — Tout-en-un (écran neuf)",
+            "detail": "Complet — Carton, documentation, facture 2012 — 1 seul propriétaire",
+            "price": "650 €",
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/97/imp_photo_104260_1752324670.jpg"
+          },
+          {
+            "brand": "Euphya",
+            "model": "Alliance 270 — Amplificateur intégré",
+            "detail": "Très bon état — Entrée phono, télécommande — Facture 03/2002",
+            "price": "750 €",
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/a4/imp_photo_204_1738080212.jpg"
+          },
+          {
+            "brand": "Quad",
+            "model": "34 + 306 + FM4 + Meuble — Ensemble complet",
+            "detail": "Très bon état — Documentation complète",
+            "price": "730 €",
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/74/imp_photo_104235_1754039956.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Sources",
+        "note": "",
+        "compact": false,
+        "products": [
+          {
+            "brand": "Roksan",
+            "model": "Kandy K3 — Lecteur CD anthracite",
+            "detail": "Comme neuf (07/2021) — Carton, télécommande",
+            "price": "950 €",
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/2c/imp_photo_108707_1759308123.jpg"
+          },
+          {
+            "brand": "Thorens",
+            "model": "TD316 — Platine vinyle",
+            "detail": "Très bon état — Cellule neuve AT VM95E, courroie neuve",
+            "price": "230 €",
+            "imageUrl": ""
+          },
+          {
+            "brand": "Magnum Dynalab",
+            "model": "FT-11 — Tuner FM",
+            "detail": "Bon état",
+            "price": "250 €",
+            "imageUrl": ""
+          }
+        ]
+      },
+      {
+        "name": "Enceintes",
+        "note": "(la paire)",
+        "compact": false,
+        "products": [
+          {
+            "brand": "Wilson Benesch",
+            "model": "Vector — Enceintes colonne",
+            "detail": "Parfait état — Cartons — Facture 02/2014",
+            "price": "5 800 €",
+            "imageUrl": ""
+          },
+          {
+            "brand": "JMR",
+            "model": "Orféo Suprême V2 — Enceintes colonne",
+            "detail": "Très bon état — Cartons — Facture 05/2020",
+            "price": "4 300 €",
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/d8/prod_photo1_204_1758198991.jpg"
+          },
+          {
+            "brand": "ProAc",
+            "model": "Response 1 — Enceintes bibliothèque",
+            "detail": "Très bon état — Première série, filtres extérieurs — Supports & câbles AudioQuest Slate inclus",
+            "price": "1 100 €",
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/5a/imp_photo_204_1758199216.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Câbles & Accessoires",
+        "note": "",
+        "compact": true,
+        "products": [
+          {
+            "brand": "AirTech",
+            "model": "Zero XLR 1m50",
+            "detail": "",
+            "price": "1 600 €",
+            "imageUrl": ""
+          },
+          {
+            "brand": "AirTech",
+            "model": "Air RCA 2×1m",
+            "detail": "",
+            "price": "800 €",
+            "imageUrl": ""
+          },
+          {
+            "brand": "AirTech",
+            "model": "Evo2 RCA 2×1m",
+            "detail": "",
+            "price": "600 €",
+            "imageUrl": ""
+          },
+          {
+            "brand": "Vertere",
+            "model": "Redline XLR 1m",
+            "detail": "",
+            "price": "450 €",
+            "imageUrl": ""
+          },
+          {
+            "brand": "Cardas",
+            "model": "Iridium XLR 1m",
+            "detail": "",
+            "price": "190 €",
+            "imageUrl": ""
+          },
+          {
+            "brand": "Neodio",
+            "model": "HP Origine L0 — 2×3m",
+            "detail": "",
+            "price": "350 €",
+            "imageUrl": ""
+          },
+          {
+            "brand": "Crimson",
+            "model": "HP 2×2m — Bananes",
+            "detail": "",
+            "price": "250 €",
+            "imageUrl": ""
+          }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Nous rencontrer",
+    "address": "JM Audio\n2 rue Legouz Gerland\n21000 Dijon",
+    "hours": "Mardi – Vendredi : 14h – 19h\nSamedi : 10h – 12h / 14h – 19h\nÉcoute sur RDV les matins du mardi au vendredi",
+    "phone": "03 80 77 04 91",
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43364.52390784498!2d5.0041!3d47.3220!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f29d8cefb8e0fd%3A0xb02e1ca256e1cdb!2sDijon!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+  }
+}
