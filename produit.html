@@ -57,6 +57,25 @@
     </div>
   </footer>
 
+  <!-- Modal Contact -->
+  <div class="modal-overlay" id="contact-modal">
+    <div class="modal">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h3>Nous contacter</h3>
+      <div class="separator"></div>
+      <div class="modal-body">
+        <a href="" class="modal-link" id="modal-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="modal-phone-text"></span>
+        </a>
+        <a href="" class="modal-link" id="modal-email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+          <span id="modal-email-text"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div class="product-lightbox" id="lightbox">
     <img src="" alt="" id="lightbox-img">
   </div>
@@ -131,7 +150,7 @@
         if (prod.description) {
           html += '<div class="product-description">' + escHtml(prod.description) + '</div>';
         }
-        html += '<a href="index.html#contact" class="product-cta">Nous contacter</a>';
+        html += '<button type="button" class="product-cta" id="product-contact-btn">Nous contacter</button>';
         html += '</div>';
 
         html += '</div>';
@@ -166,6 +185,47 @@
         lightbox.addEventListener('click', function () {
           lightbox.classList.remove('open');
         });
+
+        // Contact modal
+        var c = data.contact;
+        var phoneLink = 'tel:+33' + c.phone.replace(/\s/g, '').replace(/^0/, '');
+        var emailLink = 'mailto:' + c.email;
+        var phoneEl = document.getElementById('modal-phone');
+        var emailEl = document.getElementById('modal-email');
+        if (phoneEl) {
+          phoneEl.href = phoneLink;
+          document.getElementById('modal-phone-text').textContent = c.phone;
+        }
+        if (emailEl) {
+          emailEl.href = emailLink;
+          document.getElementById('modal-email-text').textContent = c.email;
+        }
+
+        var modalOverlay = document.getElementById('contact-modal');
+        var modalClose = document.getElementById('modal-close');
+        function openModal() {
+          modalOverlay.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+          modalOverlay.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function (e) {
+          if (e.target === modalOverlay) closeModal();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeModal();
+        });
+
+        var productContactBtn = document.getElementById('product-contact-btn');
+        if (productContactBtn) {
+          productContactBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openModal();
+          });
+        }
 
         // Mobile menu
         var toggle = document.getElementById('menu-toggle');

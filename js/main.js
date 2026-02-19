@@ -212,6 +212,63 @@
       '</div>';
   }
 
+  /* --- Contact Modal --- */
+
+  function renderContactModal(data) {
+    var c = data.contact;
+    var phoneLink = 'tel:+33' + c.phone.replace(/\s/g, '').replace(/^0/, '');
+    var emailLink = 'mailto:' + c.email;
+
+    var phoneEl = document.getElementById('modal-phone');
+    var emailEl = document.getElementById('modal-email');
+    if (phoneEl) {
+      phoneEl.href = phoneLink;
+      document.getElementById('modal-phone-text').textContent = c.phone;
+    }
+    if (emailEl) {
+      emailEl.href = emailLink;
+      document.getElementById('modal-email-text').textContent = c.email;
+    }
+  }
+
+  function openContactModal() {
+    document.getElementById('contact-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeContactModal() {
+    document.getElementById('contact-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function initContactModal() {
+    var overlay = document.getElementById('contact-modal');
+    var closeBtn = document.getElementById('modal-close');
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeContactModal);
+    }
+    if (overlay) {
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeContactModal();
+      });
+    }
+
+    // Occasions CTA button
+    var occasionsBtn = document.querySelector('.occasions-btn');
+    if (occasionsBtn) {
+      occasionsBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openContactModal();
+      });
+    }
+
+    // Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeContactModal();
+    });
+  }
+
   /* --- UI Initialization (scroll, menu, observer) --- */
 
   function initUI() {
@@ -279,7 +336,9 @@
       renderNews(data);
       renderOccasions(data);
       renderContact(data);
+      renderContactModal(data);
       initUI();
+      initContactModal();
     })
     .catch(function (err) {
       console.error('Erreur chargement data.json:', err);
