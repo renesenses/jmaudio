@@ -411,6 +411,98 @@ body {
   margin: 0;
 }
 
+/* --- Image Upload Zone --- */
+.image-upload-zone {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: var(--admin-white);
+  border: 1px solid var(--admin-border-light);
+  border-radius: var(--admin-radius);
+}
+
+.image-upload-zone label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--admin-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.image-upload-btn {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: var(--admin-white);
+  color: var(--admin-primary);
+  border: 1px solid var(--admin-border-light);
+  border-radius: var(--admin-radius);
+  font-family: var(--admin-font);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.image-upload-btn:hover {
+  border-color: var(--admin-primary);
+}
+
+.image-upload-status {
+  font-size: 0.78rem;
+  color: var(--admin-text-muted);
+  margin-left: 0.5rem;
+}
+
+.image-upload-status.error {
+  color: var(--admin-danger);
+}
+
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.image-preview-item {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--admin-border-light);
+  border-radius: var(--admin-radius);
+  overflow: hidden;
+  background: var(--admin-bg);
+}
+
+.image-preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-preview-item .image-remove-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: var(--admin-danger);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.image-preview-item:hover .image-remove-btn {
+  opacity: 1;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .admin-header-inner {

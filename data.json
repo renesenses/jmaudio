@@ -180,28 +180,36 @@
             "model": "Model 125 — Bloc de puissance stéréo",
             "detail": "Très bon état — Carton, documentation — Acheté en 2015",
             "price": "2 250 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/ec/imp_photo_108210_1754139035.jpg"
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/ec/imp_photo_108210_1754139035.jpg",
+            "description": "",
+            "images": []
           },
           {
             "brand": "Naim",
             "model": "Uniti1 — Tout-en-un (écran neuf)",
             "detail": "Complet — Carton, documentation, facture 2012 — 1 seul propriétaire",
             "price": "650 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/97/imp_photo_104260_1752324670.jpg"
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/97/imp_photo_104260_1752324670.jpg",
+            "description": "",
+            "images": []
           },
           {
             "brand": "Euphya",
             "model": "Alliance 270 — Amplificateur intégré",
             "detail": "Très bon état — Entrée phono, télécommande — Facture 03/2002",
             "price": "750 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/a4/imp_photo_204_1738080212.jpg"
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/a4/imp_photo_204_1738080212.jpg",
+            "description": "",
+            "images": []
           },
           {
             "brand": "Quad",
             "model": "34 + 306 + FM4 + Meuble — Ensemble complet",
             "detail": "Très bon état — Documentation complète",
             "price": "730 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/74/imp_photo_104235_1754039956.jpg"
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/74/imp_photo_104235_1754039956.jpg",
+            "description": "",
+            "images": []
           }
         ]
       },
@@ -215,21 +223,27 @@
             "model": "Kandy K3 — Lecteur CD anthracite",
             "detail": "Comme neuf (07/2021) — Carton, télécommande",
             "price": "950 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/2c/imp_photo_108707_1759308123.jpg"
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/2c/imp_photo_108707_1759308123.jpg",
+            "description": "",
+            "images": []
           },
           {
             "brand": "Thorens",
             "model": "TD316 — Platine vinyle",
             "detail": "Très bon état — Cellule neuve AT VM95E, courroie neuve",
             "price": "230 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           },
           {
             "brand": "Magnum Dynalab",
             "model": "FT-11 — Tuner FM",
             "detail": "Bon état",
             "price": "250 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           }
         ]
       },
@@ -243,21 +257,27 @@
             "model": "Vector — Enceintes colonne",
             "detail": "Parfait état — Cartons — Facture 02/2014",
             "price": "5 800 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           },
           {
             "brand": "JMR",
             "model": "Orféo Suprême V2 — Enceintes colonne",
             "detail": "Très bon état — Cartons — Facture 05/2020",
             "price": "4 300 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/d8/prod_photo1_204_1758198991.jpg"
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/d8/prod_photo1_204_1758198991.jpg",
+            "description": "",
+            "images": []
           },
           {
             "brand": "ProAc",
             "model": "Response 1 — Enceintes bibliothèque",
             "detail": "Très bon état — Première série, filtres extérieurs — Supports & câbles AudioQuest Slate inclus",
             "price": "1 100 €",
-            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/5a/imp_photo_204_1758199216.jpg"
+            "imageUrl": "https://media.achat-ville.com/uploads/cotedor/Produit/5a/imp_photo_204_1758199216.jpg",
+            "description": "",
+            "images": []
           }
         ]
       },
@@ -271,49 +291,63 @@
             "model": "Zero XLR 1m50",
             "detail": "",
             "price": "1 600 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           },
           {
             "brand": "AirTech",
             "model": "Air RCA 2×1m",
             "detail": "",
             "price": "800 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           },
           {
             "brand": "AirTech",
             "model": "Evo2 RCA 2×1m",
             "detail": "",
             "price": "600 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           },
           {
             "brand": "Vertere",
             "model": "Redline XLR 1m",
             "detail": "",
             "price": "450 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           },
           {
             "brand": "Cardas",
             "model": "Iridium XLR 1m",
             "detail": "",
             "price": "190 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           },
           {
             "brand": "Neodio",
             "model": "HP Origine L0 — 2×3m",
             "detail": "",
             "price": "350 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           },
           {
             "brand": "Crimson",
             "model": "HP 2×2m — Bananes",
             "detail": "",
             "price": "250 €",
-            "imageUrl": ""
+            "imageUrl": "",
+            "description": "",
+            "images": []
           }
         ]
       }

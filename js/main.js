@@ -80,15 +80,16 @@
     document.getElementById('occasions-intro').textContent = o.intro;
 
     var html = '';
-    o.categories.forEach(function (cat) {
+    o.categories.forEach(function (cat, catIndex) {
       var noteHtml = cat.note ? ' <span class="occasions-note">' + cat.note + '</span>' : '';
       html += '<h3 class="occasions-category-title animate">' + cat.name + noteHtml + '</h3>';
 
       var gridClass = cat.compact ? 'occasions-grid occasions-grid-compact' : 'occasions-grid';
       html += '<div class="' + gridClass + '">';
 
-      cat.products.forEach(function (prod) {
+      cat.products.forEach(function (prod, prodIndex) {
         var cardClass = cat.compact ? 'occasion-card occasion-card-small animate' : 'occasion-card animate';
+        html += '<a href="produit.html?cat=' + catIndex + '&prod=' + prodIndex + '" class="occasion-card-link">';
         html += '<article class="' + cardClass + '">';
 
         if (prod.imageUrl) {
@@ -106,7 +107,7 @@
         }
 
         html += '<p class="occasion-price">' + prod.price + '</p>' +
-          '</div></article>';
+          '</div></article></a>';
       });
 
       html += '</div>';

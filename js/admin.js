@@ -449,15 +449,25 @@
 
     block.querySelector('.btn-add-product').addEventListener('click', function () {
       var count = productsList.children.length;
-      productsList.appendChild(createProductBlock({ brand: '', model: '', detail: '', price: '', imageUrl: '' }, count));
+      productsList.appendChild(createProductBlock({ brand: '', model: '', detail: '', price: '', imageUrl: '', description: '', images: [] }, count));
     });
 
     return block;
   }
 
+  function slugify(str) {
+    return str.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+
   function createProductBlock(prod, index) {
     var block = document.createElement('div');
     block.className = 'nested-block';
+
+    var images = prod.images || [];
+
     block.innerHTML =
       '<div class="block-header"><h4>Produit ' + (index + 1) + '</h4><button class="btn btn-danger btn-remove-product">Suppr.</button></div>' +
       '<div class="form-row">' +
@@ -466,12 +476,139 @@
       '</div>' +
       '<div class="form-group"><label>Modèle</label><input type="text" class="prod-model" value="' + escAttr(prod.model) + '"></div>' +
       '<div class="form-group"><label>Détail / État</label><input type="text" class="prod-detail" value="' + escAttr(prod.detail) + '"></div>' +
-      '<div class="form-group"><label>URL image (vide si pas d\'image)</label><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"></div>';
+      '<div class="form-group"><label>URL image principale (vide si pas d\'image)</label><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"></div>' +
+      '<div class="form-group"><label>Description complète (visible sur la page détail)</label><textarea class="prod-description" rows="3">' + escHtml(prod.description || '') + '</textarea></div>' +
+      '<div class="image-upload-zone">' +
+        '<label>Images supplémentaires</label>' +
+        '<div class="image-preview prod-images-preview"></div>' +
+        '<div style="margin-top: 0.5rem;">' +
+          '<button type="button" class="image-upload-btn btn-upload-images">Ajouter des images</button>' +
+          '<input type="file" class="prod-images-input" accept="image/*" multiple style="display:none;">' +
+          '<span class="image-upload-status prod-upload-status"></span>' +
+        '</div>' +
+      '</div>';
 
     block.querySelector('.btn-remove-product').addEventListener('click', function () {
       block.remove();
     });
+
+    // Render existing images
+    var previewContainer = block.querySelector('.prod-images-preview');
+    images.forEach(function (imgPath) {
+      previewContainer.appendChild(createImagePreviewItem(imgPath, block));
+    });
+
+    // Upload button click
+    var fileInput = block.querySelector('.prod-images-input');
+    block.querySelector('.btn-upload-images').addEventListener('click', function () {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', function () {
+      var files = fileInput.files;
+      if (!files.length) return;
+      var statusEl = block.querySelector('.prod-upload-status');
+      var brand = block.querySelector('.prod-brand').value || 'produit';
+      var model = block.querySelector('.prod-model').value || '';
+
+      var total = files.length;
+      var done = 0;
+      statusEl.textContent = 'Upload 0/' + total + '...';
+      statusEl.className = 'image-upload-status prod-upload-status';
+
+      Array.prototype.forEach.call(files, function (file) {
+        var ext = file.name.split('.').pop().toLowerCase();
+        var filename = slugify(brand + '-' + model) + '-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4) + '.' + ext;
+        var path = 'img/occasions/' + filename;
+
+        var reader = new FileReader();
+        reader.onload = function () {
+          var base64 = reader.result.split(',')[1];
+
+          fetch(API_BASE + '/repos/' + REPO + '/contents/' + path, {
+            method: 'PUT',
+            headers: apiHeaders(),
+            body: JSON.stringify({
+              message: 'Ajout image ' + filename,
+              content: base64
+            })
+          })
+          .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(function () {
+            previewContainer.appendChild(createImagePreviewItem(path, block));
+            done++;
+            if (done === total) {
+              statusEl.textContent = total + ' image(s) uploadée(s)';
+              setTimeout(function () { statusEl.textContent = ''; }, 3000);
+            } else {
+              statusEl.textContent = 'Upload ' + done + '/' + total + '...';
+            }
+          })
+          .catch(function (err) {
+            done++;
+            statusEl.textContent = 'Erreur upload : ' + err.message;
+            statusEl.className = 'image-upload-status prod-upload-status error';
+            console.error(err);
+          });
+        };
+        reader.readAsDataURL(file);
+      });
+
+      fileInput.value = '';
+    });
+
     return block;
+  }
+
+  function createImagePreviewItem(imgPath, productBlock) {
+    var item = document.createElement('div');
+    item.className = 'image-preview-item';
+    item.dataset.path = imgPath;
+    item.innerHTML =
+      '<img src="' + escAttr(imgPath) + '" alt="">' +
+      '<button type="button" class="image-remove-btn" title="Supprimer">&times;</button>';
+
+    item.querySelector('.image-remove-btn').addEventListener('click', function () {
+      if (!confirm('Supprimer cette image du repo ?')) return;
+
+      var statusEl = productBlock.querySelector('.prod-upload-status');
+      statusEl.textContent = 'Suppression...';
+
+      // Get the file SHA first
+      fetch(API_BASE + '/repos/' + REPO + '/contents/' + imgPath, {
+        headers: apiHeaders()
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (file) {
+        return fetch(API_BASE + '/repos/' + REPO + '/contents/' + imgPath, {
+          method: 'DELETE',
+          headers: apiHeaders(),
+          body: JSON.stringify({
+            message: 'Suppression image ' + imgPath.split('/').pop(),
+            sha: file.sha
+          })
+        });
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        item.remove();
+        statusEl.textContent = 'Image supprimée';
+        setTimeout(function () { statusEl.textContent = ''; }, 3000);
+      })
+      .catch(function (err) {
+        statusEl.textContent = 'Erreur suppression : ' + err.message;
+        statusEl.className = 'image-upload-status prod-upload-status error';
+        console.error(err);
+      });
+    });
+
+    return item;
   }
 
   function collectOccasionsCategories() {
@@ -479,12 +616,18 @@
     document.querySelectorAll('#occasions-categories-list > .repeatable-block').forEach(function (block) {
       var products = [];
       block.querySelectorAll('.nested-block').forEach(function (pb) {
+        var imgPaths = [];
+        pb.querySelectorAll('.prod-images-preview .image-preview-item').forEach(function (item) {
+          imgPaths.push(item.dataset.path);
+        });
         products.push({
           brand: pb.querySelector('.prod-brand').value,
           model: pb.querySelector('.prod-model').value,
           detail: pb.querySelector('.prod-detail').value,
           price: pb.querySelector('.prod-price').value,
-          imageUrl: pb.querySelector('.prod-image').value
+          imageUrl: pb.querySelector('.prod-image').value,
+          description: pb.querySelector('.prod-description').value,
+          images: imgPaths
         });
       });
       categories.push({
