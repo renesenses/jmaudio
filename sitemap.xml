@@ -3,11 +3,126 @@
   <url>
     <loc>https://www.jmaudio.fr/</loc>
     <lastmod>2026-02-21</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- Jeff Rowland Model 125 — Bloc de puissance stéréo -->
   <url>
-    <loc>https://www.jmaudio.fr/produit.html</loc>
+    <loc>https://www.jmaudio.fr/produit.html?cat=0&amp;prod=0</loc>
     <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Naim Uniti1 — Tout-en-un (écran neuf) -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=0&amp;prod=1</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Euphya Alliance 270 — Amplificateur intégré -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=0&amp;prod=2</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Quad 34 + 306 + FM4 + Meuble — Ensemble complet -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=0&amp;prod=3</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Roksan Kandy K3 — Lecteur CD anthracite -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=1&amp;prod=0</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Thorens TD316 — Platine vinyle -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=1&amp;prod=1</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Magnum Dynalab FT-11 — Tuner FM -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=1&amp;prod=2</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Wilson Benesch Vector — Enceintes colonne -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=2&amp;prod=0</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- JMR Orféo Suprême V2 — Enceintes colonne -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=2&amp;prod=1</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- ProAc Response 1 — Enceintes bibliothèque -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=2&amp;prod=2</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- AirTech Zero XLR 1m50 -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=3&amp;prod=0</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- AirTech Air RCA 2×1m -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=3&amp;prod=1</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- AirTech Evo2 RCA 2×1m -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=3&amp;prod=2</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- Vertere Redline XLR 1m -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=3&amp;prod=3</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- Cardas Iridium XLR 1m -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=3&amp;prod=4</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- Neodio HP Origine L0 — 2×3m -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=3&amp;prod=5</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- Crimson HP 2×2m — Bananes -->
+  <url>
+    <loc>https://www.jmaudio.fr/produit.html?cat=3&amp;prod=6</loc>
+    <lastmod>2026-02-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 </urlset>

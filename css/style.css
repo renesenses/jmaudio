@@ -1180,3 +1180,76 @@ a.marque:hover {
     font-size: clamp(1.8rem, 7vw, 2.8rem);
   }
 }
+
+/* --- FAQ --- */
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  padding: 1.25rem 0;
+}
+
+.faq-item summary {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--cream);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.faq-item[open] summary::after {
+  content: '−';
+}
+
+.faq-item p {
+  margin-top: 0.75rem;
+  color: var(--cream-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* --- Breadcrumb --- */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.breadcrumb a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: var(--cream-muted);
+}
