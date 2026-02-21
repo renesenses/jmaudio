@@ -141,11 +141,13 @@
           'brand': {'@type': 'Brand', 'name': prod.brand},
           'category': cat.name,
           'itemCondition': 'https://schema.org/UsedCondition',
+          'url': seoUrl,
           'offers': {
             '@type': 'Offer',
             'price': priceNum,
             'priceCurrency': 'EUR',
             'availability': 'https://schema.org/InStock',
+            'url': seoUrl,
             'seller': {
               '@type': 'LocalBusiness',
               'name': 'JM Audio',
@@ -165,7 +167,7 @@
           'itemListElement': [
             {'@type': 'ListItem', 'position': 1, 'name': 'Accueil', 'item': 'https://www.jmaudio.fr/'},
             {'@type': 'ListItem', 'position': 2, 'name': 'Occasions', 'item': 'https://www.jmaudio.fr/#occasions'},
-            {'@type': 'ListItem', 'position': 3, 'name': cat.name, 'item': 'https://www.jmaudio.fr/#occasions'},
+            {'@type': 'ListItem', 'position': 3, 'name': cat.name},
             {'@type': 'ListItem', 'position': 4, 'name': prod.brand + ' ' + prod.model}
           ]
         });
