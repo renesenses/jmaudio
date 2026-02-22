@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4ba85"/>
+      <stop offset="50%" stop-color="#c9a96e"/>
+      <stop offset="100%" stop-color="#b8944f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="32" fill="#0a0a0a"/>
+
+  <!-- Decorative circle -->
+  <circle cx="200" cy="178" r="100" fill="none" stroke="url(#gold)" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="200" cy="178" r="116" fill="none" stroke="url(#gold)" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Sound wave arcs (subtle hi-fi reference) -->
+  <path d="M 152 178 A 48 48 0 0 1 152 130" fill="none" stroke="url(#gold)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 140 178 A 60 60 0 0 1 140 118" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+  <path d="M 128 178 A 72 72 0 0 1 128 106" fill="none" stroke="url(#gold)" stroke-width="1" stroke-linecap="round" opacity="0.2"/>
+
+  <path d="M 248 178 A 48 48 0 0 0 248 130" fill="none" stroke="url(#gold)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 260 178 A 60 60 0 0 0 260 118" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+  <path d="M 272 178 A 72 72 0 0 0 272 106" fill="none" stroke="url(#gold)" stroke-width="1" stroke-linecap="round" opacity="0.2"/>
+
+  <!-- JM monogram -->
+  <text x="200" y="198" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="80" font-weight="bold" fill="url(#gold)" letter-spacing="-2">JM</text>
+
+  <!-- Separator line -->
+  <line x1="150" y1="228" x2="250" y2="228" stroke="url(#gold)" stroke-width="1" opacity="0.4"/>
+
+  <!-- Audio text -->
+  <text x="200" y="264" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="300" fill="#f0ece2" letter-spacing="12">AUDIO</text>
+
+  <!-- Tagline -->
+  <text x="200" y="310" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="11" font-style="italic" fill="#a8a49c" letter-spacing="1">Hi-Fi &amp; Home Cinéma — Dijon</text>
+
+</svg>
