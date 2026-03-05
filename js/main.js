@@ -28,12 +28,32 @@
     var container = document.getElementById('presentation-cards').parentNode;
     var grid = document.getElementById('presentation-cards');
 
-    // Insert auditorium image before the cards grid
-    if (p.imageUrl) {
-      var imgDiv = document.createElement('div');
-      imgDiv.className = 'presentation-image animate';
-      imgDiv.innerHTML = '<img src="' + p.imageUrl + '" alt="Auditorium JM Audio" loading="lazy">';
-      container.insertBefore(imgDiv, grid);
+    // Insert carousel before the cards grid
+    if (p.carouselImages && p.carouselImages.length > 0) {
+      var carouselDiv = document.createElement('div');
+      carouselDiv.className = 'carousel animate';
+
+      var trackHtml = '<div class="carousel-track">';
+      var dotsHtml = '<div class="carousel-dots">';
+
+      p.carouselImages.forEach(function (img, i) {
+        trackHtml += '<div class="carousel-slide' + (i === 0 ? ' active' : '') + '">' +
+          '<img src="' + img.url + '" alt="' + img.alt + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '">' +
+          '</div>';
+        dotsHtml += '<button class="carousel-dot' + (i === 0 ? ' active' : '') + '" aria-label="Photo ' + (i + 1) + '"></button>';
+      });
+
+      trackHtml += '</div>';
+      dotsHtml += '</div>';
+
+      carouselDiv.innerHTML =
+        trackHtml +
+        '<button class="carousel-btn carousel-prev" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button>' +
+        '<button class="carousel-btn carousel-next" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 6 15 12 9 18"/></svg></button>' +
+        dotsHtml;
+
+      container.insertBefore(carouselDiv, grid);
+      initCarousel(carouselDiv);
     }
 
     var html = '';
@@ -45,6 +65,52 @@
         '</div>';
     });
     grid.innerHTML = html;
+  }
+
+  function initCarousel(el) {
+    var slides = el.querySelectorAll('.carousel-slide');
+    var dots = el.querySelectorAll('.carousel-dot');
+    var current = 0;
+    var total = slides.length;
+    var autoplayInterval;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (index + total) % total;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(next, 5000);
+    }
+
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+
+    el.querySelector('.carousel-next').addEventListener('click', function () {
+      stopAutoplay(); next(); startAutoplay();
+    });
+
+    el.querySelector('.carousel-prev').addEventListener('click', function () {
+      stopAutoplay(); prev(); startAutoplay();
+    });
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        stopAutoplay(); goTo(i); startAutoplay();
+      });
+    });
+
+    el.addEventListener('mouseenter', stopAutoplay);
+    el.addEventListener('mouseleave', startAutoplay);
+
+    startAutoplay();
   }
 
   function renderMarques(data) {

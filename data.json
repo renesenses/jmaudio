@@ -7,7 +7,17 @@
   },
   "presentation": {
     "sectionTitle": "Un lieu dédié à l'écoute",
-    "imageUrl": "img/auditorium.jpg",
+    "carouselImages": [
+      { "url": "img/auditorium/showroom-1.jpg", "alt": "Showroom JM Audio — vue d'ensemble avec systèmes en écoute" },
+      { "url": "img/auditorium/showroom-2.jpg", "alt": "Showroom JM Audio — enceintes et électronique haut de gamme" },
+      { "url": "img/auditorium/salle-principale-1.jpg", "alt": "Salle d'écoute principale — système référence" },
+      { "url": "img/auditorium/salle-principale-2.jpg", "alt": "Salle d'écoute principale — détail de l'électronique" },
+      { "url": "img/auditorium/showroom-3.jpg", "alt": "Showroom JM Audio — électronique et enceintes colonne" },
+      { "url": "img/auditorium/auditorium-rouge-1.jpg", "alt": "Auditorium traité acoustiquement — système prestige" },
+      { "url": "img/auditorium/auditorium-rouge-2.jpg", "alt": "Auditorium traité acoustiquement — vue rapprochée" },
+      { "url": "img/auditorium/zone-ecoute.jpg", "alt": "Zone d'écoute avec système Arcam" },
+      { "url": "img/auditorium/espace-accueil.jpg", "alt": "Espace accueil — vinyles et confort d'écoute" }
+    ],
     "cards": [
       {
         "number": "2",
