@@ -8,15 +8,42 @@
   "presentation": {
     "sectionTitle": "Un lieu dédié à l'écoute",
     "carouselImages": [
-      { "url": "img/auditorium/showroom-1.jpg", "alt": "Showroom JM Audio — vue d'ensemble avec systèmes en écoute" },
-      { "url": "img/auditorium/showroom-2.jpg", "alt": "Showroom JM Audio — enceintes et électronique haut de gamme" },
-      { "url": "img/auditorium/salle-principale-1.jpg", "alt": "Salle d'écoute principale — système référence" },
-      { "url": "img/auditorium/salle-principale-2.jpg", "alt": "Salle d'écoute principale — détail de l'électronique" },
-      { "url": "img/auditorium/showroom-3.jpg", "alt": "Showroom JM Audio — électronique et enceintes colonne" },
-      { "url": "img/auditorium/auditorium-rouge-1.jpg", "alt": "Auditorium traité acoustiquement — système prestige" },
-      { "url": "img/auditorium/auditorium-rouge-2.jpg", "alt": "Auditorium traité acoustiquement — vue rapprochée" },
-      { "url": "img/auditorium/zone-ecoute.jpg", "alt": "Zone d'écoute avec système Arcam" },
-      { "url": "img/auditorium/espace-accueil.jpg", "alt": "Espace accueil — vinyles et confort d'écoute" }
+      {
+        "url": "img/auditorium/showroom-1.jpg",
+        "alt": "Showroom JM Audio — vue d'ensemble avec systèmes en écoute"
+      },
+      {
+        "url": "img/auditorium/showroom-2.jpg",
+        "alt": "Showroom JM Audio — enceintes et électronique haut de gamme"
+      },
+      {
+        "url": "img/auditorium/salle-principale-1.jpg",
+        "alt": "Salle d'écoute principale — système référence"
+      },
+      {
+        "url": "img/auditorium/salle-principale-2.jpg",
+        "alt": "Salle d'écoute principale — détail de l'électronique"
+      },
+      {
+        "url": "img/auditorium/showroom-3.jpg",
+        "alt": "Showroom JM Audio — électronique et enceintes colonne"
+      },
+      {
+        "url": "img/auditorium/auditorium-rouge-1.jpg",
+        "alt": "Auditorium traité acoustiquement — système prestige"
+      },
+      {
+        "url": "img/auditorium/auditorium-rouge-2.jpg",
+        "alt": "Auditorium traité acoustiquement — vue rapprochée"
+      },
+      {
+        "url": "img/auditorium/zone-ecoute.jpg",
+        "alt": "Zone d'écoute avec système Arcam"
+      },
+      {
+        "url": "img/auditorium/espace-accueil.jpg",
+        "alt": "Espace accueil — vinyles et confort d'écoute"
+      }
     ],
     "cards": [
       {
@@ -245,15 +272,6 @@
             "imageUrl": "img/occasions/euphya-alliance-270.jpg",
             "description": "",
             "images": []
-          },
-          {
-            "brand": "Quad",
-            "model": "34 + 306 + FM4 + Meuble — Ensemble complet",
-            "detail": "Très bon état — Documentation complète",
-            "price": "730 €",
-            "imageUrl": "img/occasions/quad-34-306-fm4.jpg",
-            "description": "",
-            "images": []
           }
         ]
       },
@@ -262,15 +280,6 @@
         "note": "",
         "compact": false,
         "products": [
-          {
-            "brand": "Roksan",
-            "model": "Kandy K3 — Lecteur CD anthracite",
-            "detail": "Comme neuf (07/2021) — Carton, télécommande",
-            "price": "950 €",
-            "imageUrl": "img/occasions/roksan-kandy-k3.jpg",
-            "description": "",
-            "images": []
-          },
           {
             "brand": "Thorens",
             "model": "TD316 — Platine vinyle",
@@ -304,24 +313,6 @@
             "imageUrl": "",
             "description": "",
             "images": []
-          },
-          {
-            "brand": "JMR",
-            "model": "Orféo Suprême V2 — Enceintes colonne",
-            "detail": "Très bon état — Cartons — Facture 05/2020",
-            "price": "4 300 €",
-            "imageUrl": "img/occasions/jmr-orfeo-supreme-v2.jpg",
-            "description": "",
-            "images": []
-          },
-          {
-            "brand": "ProAc",
-            "model": "Response 1 — Enceintes bibliothèque",
-            "detail": "Très bon état — Première série, filtres extérieurs — Supports & câbles AudioQuest Slate inclus",
-            "price": "1 100 €",
-            "imageUrl": "img/occasions/proac-response-1.jpg",
-            "description": "",
-            "images": []
           }
         ]
       },
@@ -349,28 +340,10 @@
             "images": []
           },
           {
-            "brand": "AirTech",
-            "model": "Evo2 RCA 2×1m",
-            "detail": "",
-            "price": "600 €",
-            "imageUrl": "",
-            "description": "",
-            "images": []
-          },
-          {
             "brand": "Vertere",
             "model": "Redline XLR 1m",
             "detail": "",
             "price": "450 €",
-            "imageUrl": "",
-            "description": "",
-            "images": []
-          },
-          {
-            "brand": "Cardas",
-            "model": "Iridium XLR 1m",
-            "detail": "",
-            "price": "190 €",
             "imageUrl": "",
             "description": "",
             "images": []
