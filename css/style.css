@@ -879,7 +879,7 @@ a.marque:hover {
 
 .product-main-img {
   width: 100%;
-  max-height: 500px;
+  max-height: 75vh;
   background: #111;
   border: 1px solid rgba(201, 169, 110, 0.12);
   display: flex;
