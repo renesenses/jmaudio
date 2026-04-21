@@ -297,6 +297,19 @@
         "compact": false,
         "products": [
           {
+            "brand": "Récital",
+            "model": "Define Hefa — Enceintes colonne",
+            "detail": "Excellent état — Cartons",
+            "price": "750 €",
+            "imageUrl": "img/occasions/recital-define-hefa-1.jpg",
+            "description": "",
+            "images": [
+              "img/occasions/recital-define-hefa-1.jpg",
+              "img/occasions/recital-define-hefa-2.jpg",
+              "img/occasions/recital-define-hefa-3.jpg"
+            ]
+          },
+          {
             "brand": "Wilson Benesch",
             "model": "Vector — Enceintes colonne",
             "detail": "Parfait état — Cartons — Facture 02/2014",
