@@ -317,17 +317,6 @@
             "imageUrl": "",
             "description": "",
             "images": []
-          },
-          {
-            "brand": "Récital",
-            "model": "Define Hefa",
-            "detail": "Excellent état - Cartons",
-            "price": "750 €",
-            "imageUrl": "",
-            "description": "",
-            "images": [
-              "img/occasions/recital-define-hefa-1776784333817-n6wj.jpg"
-            ]
           }
         ]
       },
@@ -403,6 +392,5 @@
         "imageUrl": ""
       }
     ]
-  },
-  "img/occasions/recital-define-hefa-1776784333817-n6wj": {}
+  }
 }
