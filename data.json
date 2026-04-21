@@ -313,9 +313,14 @@
             "model": "Vector — Enceintes colonne",
             "detail": "Parfait état — Cartons — Facture 02/2014",
             "price": "5 800 €",
-            "imageUrl": "",
+            "imageUrl": "img/occasions/wilson-benesch-vector-1.jpg",
             "description": "",
-            "images": []
+            "images": [
+              "img/occasions/wilson-benesch-vector-2.jpg",
+              "img/occasions/wilson-benesch-vector-3.jpg",
+              "img/occasions/wilson-benesch-vector-4.jpg",
+              "img/occasions/wilson-benesch-vector-5.jpg"
+            ]
           }
         ]
       },
