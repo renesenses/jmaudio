@@ -411,6 +411,17 @@ body {
   margin: 0;
 }
 
+/* --- Input with inline upload button --- */
+.input-with-upload {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-with-upload input[type="text"] {
+  flex: 1;
+}
+
 /* --- Image Upload Zone --- */
 .image-upload-zone {
   margin-top: 0.75rem;

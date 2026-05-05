@@ -481,7 +481,7 @@
       '</div>' +
       '<div class="form-group"><label>Modèle</label><input type="text" class="prod-model" value="' + escAttr(prod.model) + '"></div>' +
       '<div class="form-group"><label>Détail / État</label><input type="text" class="prod-detail" value="' + escAttr(prod.detail) + '"></div>' +
-      '<div class="form-group"><label>URL image principale (vide si pas d\'image)</label><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"></div>' +
+      '<div class="form-group"><label>URL image principale (vide si pas d\'image)</label><div class="input-with-upload"><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"><button type="button" class="image-upload-btn btn-upload-main-image">Charger</button><input type="file" class="prod-main-image-input" accept="image/*" style="display:none;"><span class="image-upload-status prod-main-upload-status"></span></div></div>' +
       '<div class="form-group"><label>Description complète (visible sur la page détail)</label><textarea class="prod-description" rows="3">' + escHtml(prod.description || '') + '</textarea></div>' +
       '<div class="image-upload-zone">' +
         '<label>Images supplémentaires</label>' +
@@ -563,6 +563,66 @@
       });
 
       fileInput.value = '';
+    });
+
+    // Main image upload
+    var mainFileInput = block.querySelector('.prod-main-image-input');
+    block.querySelector('.btn-upload-main-image').addEventListener('click', function () {
+      mainFileInput.click();
+    });
+
+    mainFileInput.addEventListener('change', function () {
+      var file = mainFileInput.files[0];
+      if (!file) return;
+      var statusEl = block.querySelector('.prod-main-upload-status');
+      var brand = block.querySelector('.prod-brand').value || 'produit';
+      var model = block.querySelector('.prod-model').value || '';
+
+      var ext = file.name.split('.').pop().toLowerCase();
+      var filename = slugify(brand + '-' + model) + '.' + ext;
+      var path = 'img/occasions/' + filename;
+
+      statusEl.textContent = 'Upload...';
+      statusEl.className = 'image-upload-status prod-main-upload-status';
+
+      var reader = new FileReader();
+      reader.onload = function () {
+        var base64 = reader.result.split(',')[1];
+
+        fetch(API_BASE + '/repos/' + REPO + '/contents/' + path, {
+          headers: apiHeaders()
+        })
+        .then(function (res) {
+          if (res.ok) return res.json();
+          return null;
+        })
+        .then(function (existing) {
+          var body = {
+            message: 'Ajout image principale ' + filename,
+            content: base64
+          };
+          if (existing && existing.sha) body.sha = existing.sha;
+
+          return fetch(API_BASE + '/repos/' + REPO + '/contents/' + path, {
+            method: 'PUT',
+            headers: apiHeaders(),
+            body: JSON.stringify(body)
+          });
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          block.querySelector('.prod-image').value = path;
+          statusEl.textContent = 'Image uploadée';
+          setTimeout(function () { statusEl.textContent = ''; }, 3000);
+        })
+        .catch(function (err) {
+          statusEl.textContent = 'Erreur : ' + err.message;
+          statusEl.className = 'image-upload-status prod-main-upload-status error';
+          console.error(err);
+        });
+      };
+      reader.readAsDataURL(file);
+      mainFileInput.value = '';
     });
 
     return block;
