@@ -88,7 +88,7 @@
           },
           {
             "name": "EverSolo",
-            "url": ""
+            "url": "https://www.hamysound.com/eversologene.htm"
           },
           {
             "name": "Lindemann",
@@ -99,16 +99,24 @@
             "url": "https://www.hamysound.com/luxman.htm"
           },
           {
-            "name": "Métronome Technologie",
-            "url": "https://www.metronome.audio/"
-          },
-          {
             "name": "Naim",
             "url": "https://www.naimaudio.com/fr"
           },
           {
             "name": "Pass Labs",
             "url": "https://passlabs.fr/"
+          },
+          {
+            "name": "Rega",
+            "url": "https://www.soundandcolors.com/marques/rega/"
+          },
+          {
+            "name": "Canor",
+            "url": "https://www.jffdiffusion.fr/canor.html"
+          },
+          {
+            "name": "Roksan",
+            "url": "https://francemajordiffusion.fr/marque/roksan/"
           }
         ]
       },
@@ -126,6 +134,14 @@
           {
             "name": "Rega",
             "url": "https://www.soundandcolors.com/marques/rega/"
+          },
+          {
+            "name": "Metronome Technologie",
+            "url": "https://www.jffdiffusion.fr/metronome.html"
+          },
+          {
+            "name": "Eversolo",
+            "url": "https://www.hamysound.com/eversologene.htm"
           }
         ]
       },
@@ -155,6 +171,10 @@
           {
             "name": "Wilson Benesch",
             "url": ""
+          },
+          {
+            "name": "Indiana Line",
+            "url": "https://francemajordiffusion.fr/marque/indianaline/"
           }
         ]
       },
@@ -163,7 +183,7 @@
         "brands": [
           {
             "name": "Absolue Créations",
-            "url": ""
+            "url": "https://www.absoluecreations.com/"
           },
           {
             "name": "AudioQuest",
@@ -171,15 +191,15 @@
           },
           {
             "name": "Clarus",
-            "url": ""
+            "url": "https://www.jffdiffusion.fr/clarus-cables.html"
           },
           {
             "name": "Tributaries",
-            "url": ""
+            "url": "https://www.jffdiffusion.fr/clarus-cables.html"
           },
           {
             "name": "Tellurium Q",
-            "url": ""
+            "url": "https://telluriumq.com/"
           }
         ]
       },
@@ -187,12 +207,12 @@
         "name": "Meubles & Accessoires",
         "brands": [
           {
-            "name": "Atacama",
-            "url": ""
+            "name": "Solid Tech",
+            "url": "https://www.soundartsnetwork.com/marques/solid-tech/"
           },
           {
-            "name": "Solid Tech",
-            "url": ""
+            "name": "Solidsteel",
+            "url": "https://solidsteel.it/"
           }
         ]
       },
@@ -205,11 +225,15 @@
           },
           {
             "name": "GigaWatt",
-            "url": ""
+            "url": "https://www.nextaudio.fr/gigawatt/"
           },
           {
-            "name": "Torus",
-            "url": ""
+            "name": "Torus Power",
+            "url": "https://www.jffdiffusion.fr/torus-power.html"
+          },
+          {
+            "name": "Bada Audio",
+            "url": "https://www.jffdiffusion.fr/bada-audio.html"
           }
         ]
       }
@@ -250,10 +274,14 @@
             "brand": "Jeff Rowland",
             "model": "Model 125 — Bloc de puissance stéréo",
             "detail": "Très bon état — Carton, documentation — Acheté en 2015",
-            "price": "2 250 €",
+            "price": "1950 €",
             "imageUrl": "img/occasions/jeff-rowland-model-125.jpg",
             "description": "",
-            "images": []
+            "images": [
+              "img/occasions/jeff-rowland-model-125-bloc-de-puissance-stereo-1777972707372-je49.jpg",
+              "img/occasions/jeff-rowland-model-125-bloc-de-puissance-stereo-1777972717581-7afv.jpg",
+              "img/occasions/jeff-rowland-model-125-bloc-de-puissance-stereo-1777972743231-ov9a.jpg"
+            ]
           },
           {
             "brand": "Naim",
@@ -262,7 +290,10 @@
             "price": "650 €",
             "imageUrl": "img/occasions/naim-uniti1.jpg",
             "description": "",
-            "images": []
+            "images": [
+              "img/occasions/naim-uniti1-tout-en-un-ecran-neuf-1777972814908-dnkr.jpg",
+              "img/occasions/naim-uniti1-tout-en-un-ecran-neuf-1777972823799-krny.jpg"
+            ]
           },
           {
             "brand": "Euphya",
@@ -396,5 +427,16 @@
         "imageUrl": ""
       }
     ]
-  }
+  },
+  "img/occasions/jeff-rowland-model-125-bloc-de-puissance-stereo-1777972707372-je49": {},
+  "img/occasions/jeff-rowland-model-125-bloc-de-puissance-stereo-1777972717581-7afv": {},
+  "img/occasions/jeff-rowland-model-125-bloc-de-puissance-stereo-1777972743231-ov9a": {},
+  "img/occasions/naim-uniti1-tout-en-un-ecran-neuf-1777972814908-dnkr": {},
+  "img/occasions/naim-uniti1-tout-en-un-ecran-neuf-1777972823799-krny": {},
+  "img/occasions/recital-define-hefa-2": {},
+  "img/occasions/recital-define-hefa-3": {},
+  "img/occasions/wilson-benesch-vector-2": {},
+  "img/occasions/wilson-benesch-vector-3": {},
+  "img/occasions/wilson-benesch-vector-4": {},
+  "img/occasions/wilson-benesch-vector-5": {}
 }
