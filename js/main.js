@@ -258,6 +258,11 @@
     var addressHtml = c.address.replace(/\n/g, '<br>');
     var hoursHtml = c.hours.replace(/\n/g, '<br>');
 
+    var closureHtml = '';
+    if (c.closureActive && c.closureText) {
+      closureHtml = '<div class="closure-notice"><strong>Fermeture exceptionnelle</strong><br>' + c.closureText.replace(/\n/g, '<br>') + '</div>';
+    }
+
     document.getElementById('contact-content').innerHTML =
       '<div class="contact-info animate">' +
         '<div class="contact-block">' +
@@ -267,6 +272,7 @@
         '<div class="contact-block">' +
           '<h3>Horaires</h3>' +
           '<p>' + hoursHtml + '</p>' +
+          closureHtml +
         '</div>' +
         '<div class="contact-block">' +
           '<h3>Contact</h3>' +

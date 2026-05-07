@@ -526,6 +526,21 @@ body {
   border: 1px solid var(--admin-border-light);
 }
 
+.closure-fieldset {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: var(--admin-radius);
+  background: rgba(220, 38, 38, 0.04);
+}
+
+.closure-fieldset legend {
+  font-weight: 600;
+  color: var(--admin-danger);
+  padding: 0 0.5rem;
+  font-size: 0.95rem;
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .admin-header-inner {

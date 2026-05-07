@@ -789,6 +789,17 @@ a.marque:hover {
   border-color: var(--gold);
 }
 
+.closure-notice {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.4);
+  border-radius: 4px;
+  color: #f87171;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 .contact-map {
   border: 1px solid rgba(201, 169, 110, 0.15);
   overflow: hidden;

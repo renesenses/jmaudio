@@ -206,7 +206,11 @@
     document.querySelectorAll('[data-path]').forEach(function (el) {
       var val = getNestedValue(data, el.dataset.path);
       if (val !== undefined) {
-        el.value = val;
+        if (el.type === 'checkbox') {
+          el.checked = !!val;
+        } else {
+          el.value = val;
+        }
       }
     });
 
@@ -243,7 +247,11 @@
   function collectAllForms() {
     // Simple fields
     document.querySelectorAll('[data-path]').forEach(function (el) {
-      setNestedValue(currentData, el.dataset.path, el.value);
+      if (el.type === 'checkbox') {
+        setNestedValue(currentData, el.dataset.path, el.checked);
+      } else {
+        setNestedValue(currentData, el.dataset.path, el.value);
+      }
     });
 
     // Repeatable sections

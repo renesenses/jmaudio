@@ -175,6 +175,17 @@
           <label>Téléphone</label>
           <input type="text" id="contact-phone-input" data-path="contact.phone">
         </div>
+        <fieldset class="closure-fieldset">
+          <legend>Fermeture exceptionnelle</legend>
+          <div class="form-check">
+            <input type="checkbox" id="closure-active" data-path="contact.closureActive">
+            <label for="closure-active">Activer l'affichage (apparaîtra en rouge sur le site)</label>
+          </div>
+          <div class="form-group">
+            <label>Texte de la fermeture</label>
+            <textarea id="closure-text-input" data-path="contact.closureText" rows="2" placeholder="Ex : Fermé du 24 décembre au 2 janvier inclus"></textarea>
+          </div>
+        </fieldset>
         <div class="form-group">
           <label>URL iframe Google Maps</label>
           <input type="text" id="contact-map-input" data-path="contact.mapEmbedUrl">
