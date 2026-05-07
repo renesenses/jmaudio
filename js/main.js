@@ -278,6 +278,72 @@
       '</div>';
   }
 
+  /* --- Contact Form (Formspree) --- */
+
+  function renderContactForm() {
+    var wrapper = document.getElementById('contact-form-wrapper');
+    if (!wrapper) return;
+
+    wrapper.innerHTML =
+      '<h3 class="contact-form-title">Nous écrire</h3>' +
+      '<form id="contact-form" class="contact-form" action="https://formspree.io/f/xlgzwrwk" method="POST">' +
+        '<input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">' +
+        '<div class="form-row-contact">' +
+          '<div class="form-field"><label for="cf-name">Nom</label><input type="text" id="cf-name" name="name" required autocomplete="name"></div>' +
+          '<div class="form-field"><label for="cf-email">Email</label><input type="email" id="cf-email" name="email" required autocomplete="email"></div>' +
+        '</div>' +
+        '<div class="form-field"><label for="cf-subject">Objet</label><input type="text" id="cf-subject" name="subject"></div>' +
+        '<div class="form-field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="5" required></textarea></div>' +
+        '<button type="submit" class="contact-form-btn" id="cf-submit">Envoyer</button>' +
+        '<p class="contact-form-status" id="cf-status"></p>' +
+      '</form>';
+
+    var form = document.getElementById('contact-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var COOLDOWN = 120000;
+      var lastSent = parseInt(localStorage.getItem('jmaudio_cf_ts') || '0', 10);
+      if (Date.now() - lastSent < COOLDOWN) {
+        var remaining = Math.ceil((COOLDOWN - (Date.now() - lastSent)) / 1000);
+        showFormStatus('Veuillez patienter ' + remaining + 's avant de renvoyer un message.', 'error');
+        return;
+      }
+
+      var btn = document.getElementById('cf-submit');
+      btn.disabled = true;
+      btn.textContent = 'Envoi en cours...';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Erreur ' + res.status);
+        localStorage.setItem('jmaudio_cf_ts', String(Date.now()));
+        form.reset();
+        showFormStatus('Message envoyé ! Nous vous répondrons rapidement.', 'success');
+      })
+      .catch(function () {
+        showFormStatus('Erreur lors de l\'envoi. Réessayez ou contactez-nous par téléphone.', 'error');
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = 'Envoyer';
+      });
+    });
+  }
+
+  function showFormStatus(msg, type) {
+    var el = document.getElementById('cf-status');
+    el.textContent = msg;
+    el.className = 'contact-form-status ' + type;
+    if (type === 'success') {
+      setTimeout(function () { el.textContent = ''; el.className = 'contact-form-status'; }, 6000);
+    }
+  }
+
   /* --- Contact Modal --- */
 
   function renderContactModal(data) {
@@ -402,6 +468,7 @@
       renderNews(data);
       renderOccasions(data);
       renderContact(data);
+      renderContactForm();
       renderContactModal(data);
       initUI();
       initContactModal();
