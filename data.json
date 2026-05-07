@@ -303,6 +303,19 @@
             "imageUrl": "img/occasions/euphya-alliance-270.jpg",
             "description": "Un seul propriétaire pour cet excellent ampli EUPHYA, entrée phono, télécommande — Facture 03/2002 - carton, rien ne manque. Dépôt vente client",
             "images": []
+          },
+          {
+            "brand": "ONAIR VISION Electronics",
+            "model": "Saphir 829",
+            "detail": "Excellent",
+            "price": "750 €",
+            "imageUrl": "",
+            "description": "Petit ampli à tubes d'un fabricant Français, le Saphir 829 est équipé de tubes 829, 2x25w en classe A, il est capable de driver de nombreuses enceintes. Facture d'achat, doc, 2 tubes 829 en plus. 1 entrée RCA et une entrée Bluetooth. Pas de carton donc retrait magasin de préférence, même si un envoi reste possible. Dépôt vente cliente, une seule propriétaire.",
+            "images": [
+              "img/occasions/onair-vision-electronics-saphir-829-1778146761206-tthb.jpg",
+              "img/occasions/onair-vision-electronics-saphir-829-1778146769994-kdx0.jpg",
+              "img/occasions/onair-vision-electronics-saphir-829-1778146777096-hjrz.jpg"
+            ]
           }
         ]
       },
@@ -354,7 +367,7 @@
             ]
           },
           {
-            "brand": "CABASSE",
+            "brand": "Cabasse",
             "model": "Ibiza 352",
             "detail": "très bon état",
             "price": "600 €",
@@ -415,7 +428,7 @@
             "images": []
           },
           {
-            "brand": "TELLURIUM Q",
+            "brand": "Tellurium Q",
             "model": "Ultra Black II Power 1m50",
             "detail": "Comme neuf, dans sa boîte d'origine",
             "price": "1300",
@@ -456,5 +469,8 @@
   "img/occasions/wilson-benesch-vector-2": {},
   "img/occasions/wilson-benesch-vector-3": {},
   "img/occasions/wilson-benesch-vector-4": {},
-  "img/occasions/wilson-benesch-vector-5": {}
+  "img/occasions/wilson-benesch-vector-5": {},
+  "img/occasions/onair-vision-electronics-saphir-829-1778146761206-tthb": {},
+  "img/occasions/onair-vision-electronics-saphir-829-1778146769994-kdx0": {},
+  "img/occasions/onair-vision-electronics-saphir-829-1778146777096-hjrz": {}
 }
