@@ -727,11 +727,74 @@
         '<div class="form-group"><label>Titre</label><input type="text" class="news-item-title" value="' + escAttr(item.title) + '"></div>' +
       '</div>' +
       '<div class="form-group"><label>Contenu</label><textarea class="news-content" rows="3">' + escHtml(item.content) + '</textarea></div>' +
-      '<div class="form-group"><label>URL image (optionnel)</label><input type="text" class="news-image" value="' + escAttr(item.imageUrl) + '"></div>';
+      '<div class="form-group"><label>Image (optionnel)</label><div class="input-with-upload"><input type="text" class="news-image" value="' + escAttr(item.imageUrl) + '"><button type="button" class="image-upload-btn btn-upload-news-image">Charger</button><input type="file" class="news-image-input" accept="image/*" style="display:none;"><span class="image-upload-status news-upload-status"></span></div></div>' +
+      (item.imageUrl ? '<div class="news-image-preview"><img src="' + escAttr(item.imageUrl) + '" alt=""></div>' : '<div class="news-image-preview"></div>');
 
     block.querySelector('.btn-remove-news').addEventListener('click', function () {
       block.remove();
     });
+
+    var fileInput = block.querySelector('.news-image-input');
+    var imageInput = block.querySelector('.news-image');
+    var previewDiv = block.querySelector('.news-image-preview');
+
+    block.querySelector('.btn-upload-news-image').addEventListener('click', function () {
+      fileInput.click();
+    });
+
+    imageInput.addEventListener('input', function () {
+      if (imageInput.value) {
+        previewDiv.innerHTML = '<img src="' + escAttr(imageInput.value) + '" alt="">';
+      } else {
+        previewDiv.innerHTML = '';
+      }
+    });
+
+    fileInput.addEventListener('change', function () {
+      var file = fileInput.files[0];
+      if (!file) return;
+      var statusEl = block.querySelector('.news-upload-status');
+      var title = block.querySelector('.news-item-title').value || 'actualite';
+
+      var ext = file.name.split('.').pop().toLowerCase();
+      var filename = slugify(title) + '-' + Date.now() + '.' + ext;
+      var path = 'img/news/' + filename;
+
+      statusEl.textContent = 'Upload...';
+      statusEl.className = 'image-upload-status news-upload-status';
+
+      var reader = new FileReader();
+      reader.onload = function () {
+        var base64 = reader.result.split(',')[1];
+
+        fetch(API_BASE + '/repos/' + REPO + '/contents/' + path, {
+          method: 'PUT',
+          headers: apiHeaders(),
+          body: JSON.stringify({
+            message: 'Ajout image actualité ' + filename,
+            content: base64
+          })
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function () {
+          imageInput.value = path;
+          previewDiv.innerHTML = '<img src="' + escAttr(path) + '" alt="">';
+          statusEl.textContent = 'Image uploadée';
+          setTimeout(function () { statusEl.textContent = ''; }, 3000);
+        })
+        .catch(function (err) {
+          statusEl.textContent = 'Erreur : ' + err.message;
+          statusEl.className = 'image-upload-status news-upload-status error';
+          console.error(err);
+        });
+      };
+      reader.readAsDataURL(file);
+      fileInput.value = '';
+    });
+
     return block;
   }
 

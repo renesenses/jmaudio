@@ -514,6 +514,18 @@ body {
   opacity: 1;
 }
 
+.news-image-preview {
+  margin-top: 0.5rem;
+}
+
+.news-image-preview img {
+  max-width: 300px;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: var(--admin-radius);
+  border: 1px solid var(--admin-border-light);
+}
+
 /* --- Responsive --- */
 @media (max-width: 768px) {
   .admin-header-inner {
