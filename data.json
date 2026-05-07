@@ -276,7 +276,7 @@
             "detail": "Très bon état — Carton, documentation — Acheté en 2015",
             "price": "1950 €",
             "imageUrl": "img/occasions/jeff-rowland-model-125.jpg",
-            "description": "",
+            "description": "Un bloc de puissance que vous pouvez utiliser avec un pré-ampli ou bien un lecteur réseau avec fonction pré-ampli, de quoi alimenter de nombreuses enceintes. Dépôt vente client.",
             "images": [
               "img/occasions/jeff-rowland-model-125-bloc-de-puissance-stereo-1777972707372-je49.jpg",
               "img/occasions/jeff-rowland-model-125-bloc-de-puissance-stereo-1777972717581-7afv.jpg",
@@ -285,11 +285,11 @@
           },
           {
             "brand": "Naim",
-            "model": "Uniti1 — Tout-en-un (écran neuf)",
+            "model": "Uniti1 ",
             "detail": "Complet — Carton, documentation, facture 2012 — 1 seul propriétaire",
             "price": "650 €",
             "imageUrl": "img/occasions/naim-uniti1.jpg",
-            "description": "",
+            "description": "Tout-en-un (écran neuf), ampli-lecteur CD-radio, par contre pas de mise à jour possible, donc plus de connexion internet. Néanmoins, un appareil à ce prix est incontournable. Dépôt vente client.",
             "images": [
               "img/occasions/naim-uniti1-tout-en-un-ecran-neuf-1777972814908-dnkr.jpg",
               "img/occasions/naim-uniti1-tout-en-un-ecran-neuf-1777972823799-krny.jpg"
@@ -298,10 +298,10 @@
           {
             "brand": "Euphya",
             "model": "Alliance 270 — Amplificateur intégré",
-            "detail": "Très bon état — Entrée phono, télécommande — Facture 03/2002",
+            "detail": "Très bon état ",
             "price": "750 €",
             "imageUrl": "img/occasions/euphya-alliance-270.jpg",
-            "description": "",
+            "description": "Un seul propriétaire pour cet excellent ampli EUPHYA, entrée phono, télécommande — Facture 03/2002 - carton, rien ne manque. Dépôt vente client",
             "images": []
           }
         ]
@@ -330,10 +330,10 @@
           {
             "brand": "Récital",
             "model": "Define Hefa — Enceintes colonne",
-            "detail": "Excellent état — Cartons",
+            "detail": "Excellent état",
             "price": "750 €",
             "imageUrl": "img/occasions/recital-define-hefa-1.jpg",
-            "description": "",
+            "description": "Enceintes RECITAL Define Hefa finition chêne clair en parfait état, plus les cartons, un seul propriétaire, année 2021. A prendre en magasin.\nDépôt vente client.",
             "images": [
               "img/occasions/recital-define-hefa-2.jpg",
               "img/occasions/recital-define-hefa-3.jpg"
@@ -345,13 +345,22 @@
             "detail": "Parfait état — Cartons — Facture 02/2014",
             "price": "5 800 €",
             "imageUrl": "img/occasions/wilson-benesch-vector-1.jpg",
-            "description": "",
+            "description": "Superbes enceintes de chez WILSON BENESCH, la Vector s'efface devant la musique, petite, mais exceptionnelle. A ce prix rien d'équivalent quelque soit la marque.\nCartons, dépôt vente client. Envoi possible à votre charge, mais un retrait magasin me semble plus approprié.",
             "images": [
               "img/occasions/wilson-benesch-vector-2.jpg",
               "img/occasions/wilson-benesch-vector-3.jpg",
               "img/occasions/wilson-benesch-vector-4.jpg",
               "img/occasions/wilson-benesch-vector-5.jpg"
             ]
+          },
+          {
+            "brand": "CABASSE",
+            "model": "Ibiza 352",
+            "detail": "très bon état",
+            "price": "600 €",
+            "imageUrl": "",
+            "description": "Enceintes CABASSE Ibiza 352 en très bon état, un seul propriétaire, à prendre sur place car plus les cartons, dépôt vente client.",
+            "images": []
           }
         ]
       },
@@ -363,7 +372,7 @@
           {
             "brand": "AirTech",
             "model": "Zero XLR 1m50",
-            "detail": "",
+            "detail": "dans sa boîte d'origine, très bon état",
             "price": "1 600 €",
             "imageUrl": "",
             "description": "",
@@ -372,7 +381,7 @@
           {
             "brand": "AirTech",
             "model": "Air RCA 2×1m",
-            "detail": "",
+            "detail": "dans sa boîte d'origine très bon état",
             "price": "800 €",
             "imageUrl": "",
             "description": "",
@@ -381,7 +390,7 @@
           {
             "brand": "Vertere",
             "model": "Redline XLR 1m",
-            "detail": "",
+            "detail": "dans sa boîte d'origine, comme neuf",
             "price": "450 €",
             "imageUrl": "",
             "description": "",
@@ -390,7 +399,7 @@
           {
             "brand": "Neodio",
             "model": "HP Origine L0 — 2×3m",
-            "detail": "",
+            "detail": "très bon état",
             "price": "350 €",
             "imageUrl": "",
             "description": "",
@@ -401,6 +410,15 @@
             "model": "HP 2×2m — Bananes",
             "detail": "",
             "price": "250 €",
+            "imageUrl": "",
+            "description": "",
+            "images": []
+          },
+          {
+            "brand": "TELLURIUM Q",
+            "model": "Ultra Black II Power 1m50",
+            "detail": "Comme neuf, dans sa boîte d'origine",
+            "price": "1300",
             "imageUrl": "",
             "description": "",
             "images": []
