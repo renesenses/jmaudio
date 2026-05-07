@@ -287,6 +287,7 @@
     wrapper.innerHTML =
       '<h3 class="contact-form-title">Nous écrire</h3>' +
       '<form id="contact-form" class="contact-form" action="https://formspree.io/f/xlgzwrwk" method="POST">' +
+        '<input type="hidden" name="_replyto" value="">' +
         '<input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">' +
         '<div class="form-row-contact">' +
           '<div class="form-field"><label for="cf-name">Nom</label><input type="text" id="cf-name" name="name" required autocomplete="name"></div>' +
@@ -313,6 +314,11 @@
       var btn = document.getElementById('cf-submit');
       btn.disabled = true;
       btn.textContent = 'Envoi en cours...';
+
+      var replyTo = form.querySelector('[name="email"]').value;
+      form.querySelector('[name="_replyto"]').value = replyTo;
+      var subjectVal = form.querySelector('[name="subject"]').value || 'Sans objet';
+      form.querySelector('[name="subject"]').value = '[JM Audio] ' + subjectVal;
 
       fetch(form.action, {
         method: 'POST',
