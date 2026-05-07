@@ -378,6 +378,20 @@
               "img/occasions/cabasse-ibiza-352-1778157096279-s0q7.jpg",
               "img/occasions/cabasse-ibiza-352-1778157101893-giaw.jpg"
             ]
+          },
+          {
+            "brand": "Wilson Benesch",
+            "model": "Precision P3.0 démo magasin",
+            "detail": "comme neuves",
+            "price": "15400 €",
+            "imageUrl": "img/occasions/wilson-benesch-precision-p3-0.jpg",
+            "description": "Enceintes Wilson Benesch Precision P3.0, le haut de gamme de la série Precision. Enceintes de démo magasin, en parfait état, cartons, facture à la date d'achat, garantie. Encore le film de protection sur le dessus des enceintes.\nPrix neuves 21950 €",
+            "images": [
+              "img/occasions/wilson-benesch-precision-p3-0-1778161795841-ooau.jpg",
+              "img/occasions/wilson-benesch-precision-p3-0-1778161804541-9l5x.jpg",
+              "img/occasions/wilson-benesch-precision-p3-0-1778161812027-nfnf.jpg",
+              "img/occasions/wilson-benesch-precision-p3-0-1778161823159-yova.jpg"
+            ]
           }
         ]
       },
@@ -479,5 +493,9 @@
   "img/occasions/onair-vision-electronics-saphir-829-1778146777096-hjrz": {},
   "img/occasions/cabasse-ibiza-352-1778157089761-b8se": {},
   "img/occasions/cabasse-ibiza-352-1778157096279-s0q7": {},
-  "img/occasions/cabasse-ibiza-352-1778157101893-giaw": {}
+  "img/occasions/cabasse-ibiza-352-1778157101893-giaw": {},
+  "img/occasions/wilson-benesch-precision-p3-0-1778161795841-ooau": {},
+  "img/occasions/wilson-benesch-precision-p3-0-1778161804541-9l5x": {},
+  "img/occasions/wilson-benesch-precision-p3-0-1778161812027-nfnf": {},
+  "img/occasions/wilson-benesch-precision-p3-0-1778161823159-yova": {}
 }
