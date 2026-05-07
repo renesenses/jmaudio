@@ -728,6 +728,15 @@
   function createNewsBlock(item, index) {
     var block = document.createElement('div');
     block.className = 'repeatable-block';
+
+    var allImages = [];
+    if (item.imageUrl) allImages.push(item.imageUrl);
+    if (item.images) {
+      item.images.forEach(function (img) {
+        if (allImages.indexOf(img) === -1) allImages.push(img);
+      });
+    }
+
     block.innerHTML =
       '<div class="block-header"><h3>' + escHtml(item.title || 'Actualité ' + (index + 1)) + '</h3><button class="btn btn-danger btn-remove-news">Supprimer</button></div>' +
       '<div class="form-row">' +
@@ -735,85 +744,117 @@
         '<div class="form-group"><label>Titre</label><input type="text" class="news-item-title" value="' + escAttr(item.title) + '"></div>' +
       '</div>' +
       '<div class="form-group"><label>Contenu</label><textarea class="news-content" rows="3">' + escHtml(item.content) + '</textarea></div>' +
-      '<div class="form-group"><label>Image (optionnel)</label><div class="input-with-upload"><input type="text" class="news-image" value="' + escAttr(item.imageUrl) + '"><button type="button" class="image-upload-btn btn-upload-news-image">Charger</button><input type="file" class="news-image-input" accept="image/*" style="display:none;"><span class="image-upload-status news-upload-status"></span></div></div>' +
-      (item.imageUrl ? '<div class="news-image-preview"><img src="' + escAttr(item.imageUrl) + '" alt=""></div>' : '<div class="news-image-preview"></div>');
+      '<div class="image-upload-zone">' +
+        '<label>Images (la première sera affichée par défaut, rotation automatique sur le site)</label>' +
+        '<div class="image-preview news-images-preview"></div>' +
+        '<div style="margin-top: 0.5rem;">' +
+          '<button type="button" class="image-upload-btn btn-upload-news-images">Ajouter des images</button>' +
+          '<input type="file" class="news-images-input" accept="image/*" multiple style="display:none;">' +
+          '<span class="image-upload-status news-upload-status"></span>' +
+        '</div>' +
+      '</div>';
 
     block.querySelector('.btn-remove-news').addEventListener('click', function () {
       block.remove();
     });
 
-    var fileInput = block.querySelector('.news-image-input');
-    var imageInput = block.querySelector('.news-image');
-    var previewDiv = block.querySelector('.news-image-preview');
+    var previewContainer = block.querySelector('.news-images-preview');
+    allImages.forEach(function (imgPath) {
+      previewContainer.appendChild(createNewsImagePreviewItem(imgPath, block));
+    });
 
-    block.querySelector('.btn-upload-news-image').addEventListener('click', function () {
+    var fileInput = block.querySelector('.news-images-input');
+    block.querySelector('.btn-upload-news-images').addEventListener('click', function () {
       fileInput.click();
     });
 
-    imageInput.addEventListener('input', function () {
-      if (imageInput.value) {
-        previewDiv.innerHTML = '<img src="' + escAttr(imageInput.value) + '" alt="">';
-      } else {
-        previewDiv.innerHTML = '';
-      }
-    });
-
     fileInput.addEventListener('change', function () {
-      var file = fileInput.files[0];
-      if (!file) return;
+      var files = fileInput.files;
+      if (!files.length) return;
       var statusEl = block.querySelector('.news-upload-status');
       var title = block.querySelector('.news-item-title').value || 'actualite';
 
-      var ext = file.name.split('.').pop().toLowerCase();
-      var filename = slugify(title) + '-' + Date.now() + '.' + ext;
-      var path = 'img/news/' + filename;
-
-      statusEl.textContent = 'Upload...';
+      var total = files.length;
+      var done = 0;
+      statusEl.textContent = 'Upload 0/' + total + '...';
       statusEl.className = 'image-upload-status news-upload-status';
 
-      var reader = new FileReader();
-      reader.onload = function () {
-        var base64 = reader.result.split(',')[1];
+      Array.prototype.forEach.call(files, function (file) {
+        var ext = file.name.split('.').pop().toLowerCase();
+        var filename = slugify(title) + '-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4) + '.' + ext;
+        var path = 'img/news/' + filename;
 
-        fetch(API_BASE + '/repos/' + REPO + '/contents/' + path, {
-          method: 'PUT',
-          headers: apiHeaders(),
-          body: JSON.stringify({
-            message: 'Ajout image actualité ' + filename,
-            content: base64
+        var reader = new FileReader();
+        reader.onload = function () {
+          var base64 = reader.result.split(',')[1];
+
+          fetch(API_BASE + '/repos/' + REPO + '/contents/' + path, {
+            method: 'PUT',
+            headers: apiHeaders(),
+            body: JSON.stringify({
+              message: 'Ajout image actualité ' + filename,
+              content: base64
+            })
           })
-        })
-        .then(function (res) {
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          return res.json();
-        })
-        .then(function () {
-          imageInput.value = path;
-          previewDiv.innerHTML = '<img src="' + escAttr(path) + '" alt="">';
-          statusEl.textContent = 'Image uploadée';
-          setTimeout(function () { statusEl.textContent = ''; }, 3000);
-        })
-        .catch(function (err) {
-          statusEl.textContent = 'Erreur : ' + err.message;
-          statusEl.className = 'image-upload-status news-upload-status error';
-          console.error(err);
-        });
-      };
-      reader.readAsDataURL(file);
+          .then(function (res) {
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            return res.json();
+          })
+          .then(function () {
+            previewContainer.appendChild(createNewsImagePreviewItem(path, block));
+            done++;
+            if (done === total) {
+              statusEl.textContent = total + ' image(s) uploadée(s)';
+              setTimeout(function () { statusEl.textContent = ''; }, 3000);
+            } else {
+              statusEl.textContent = 'Upload ' + done + '/' + total + '...';
+            }
+          })
+          .catch(function (err) {
+            done++;
+            statusEl.textContent = 'Erreur upload : ' + err.message;
+            statusEl.className = 'image-upload-status news-upload-status error';
+            console.error(err);
+          });
+        };
+        reader.readAsDataURL(file);
+      });
+
       fileInput.value = '';
     });
 
     return block;
   }
 
+  function createNewsImagePreviewItem(imgPath, newsBlock) {
+    var item = document.createElement('div');
+    item.className = 'image-preview-item';
+    item.dataset.path = imgPath;
+    item.innerHTML =
+      '<img src="' + escAttr(imgPath) + '" alt="">' +
+      '<button type="button" class="image-remove-btn" title="Supprimer">&times;</button>';
+
+    item.querySelector('.image-remove-btn').addEventListener('click', function () {
+      if (!confirm('Supprimer cette image ?')) return;
+      item.remove();
+    });
+
+    return item;
+  }
+
   function collectNewsItems() {
     var items = [];
     document.querySelectorAll('#news-items-list .repeatable-block').forEach(function (block) {
+      var imgPaths = [];
+      block.querySelectorAll('.news-images-preview .image-preview-item').forEach(function (item) {
+        imgPaths.push(item.dataset.path);
+      });
       items.push({
         date: block.querySelector('.news-date').value,
         title: block.querySelector('.news-item-title').value,
         content: block.querySelector('.news-content').value,
-        imageUrl: block.querySelector('.news-image').value
+        imageUrl: imgPaths[0] || '',
+        images: imgPaths
       });
     });
     return items;
