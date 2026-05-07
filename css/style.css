@@ -95,19 +95,14 @@ img {
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--cream);
-  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
 }
 
-.logo span {
-  color: var(--gold);
-}
-
-.logo:hover {
-  color: var(--cream);
+.logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-links {
