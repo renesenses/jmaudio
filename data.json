@@ -371,9 +371,13 @@
             "model": "Ibiza 352",
             "detail": "très bon état",
             "price": "600 €",
-            "imageUrl": "",
+            "imageUrl": "img/occasions/cabasse-ibiza-352.jpg",
             "description": "Enceintes CABASSE Ibiza 352 en très bon état, un seul propriétaire, à prendre sur place car plus les cartons, dépôt vente client.",
-            "images": []
+            "images": [
+              "img/occasions/cabasse-ibiza-352-1778157089761-b8se.jpg",
+              "img/occasions/cabasse-ibiza-352-1778157096279-s0q7.jpg",
+              "img/occasions/cabasse-ibiza-352-1778157101893-giaw.jpg"
+            ]
           }
         ]
       },
@@ -472,5 +476,8 @@
   "img/occasions/wilson-benesch-vector-5": {},
   "img/occasions/onair-vision-electronics-saphir-829-1778146761206-tthb": {},
   "img/occasions/onair-vision-electronics-saphir-829-1778146769994-kdx0": {},
-  "img/occasions/onair-vision-electronics-saphir-829-1778146777096-hjrz": {}
+  "img/occasions/onair-vision-electronics-saphir-829-1778146777096-hjrz": {},
+  "img/occasions/cabasse-ibiza-352-1778157089761-b8se": {},
+  "img/occasions/cabasse-ibiza-352-1778157096279-s0q7": {},
+  "img/occasions/cabasse-ibiza-352-1778157101893-giaw": {}
 }
