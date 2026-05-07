@@ -21,7 +21,7 @@
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, sans-serif;
 
-  --nav-height: 110px;
+  --nav-height: 130px;
   --container-width: 1200px;
   --transition: 0.3s ease;
 }
@@ -100,7 +100,7 @@ img {
 }
 
 .logo-img {
-  height: 100px;
+  height: 120px;
   width: auto;
   object-fit: contain;
 }
