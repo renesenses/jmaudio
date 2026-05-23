@@ -72,51 +72,51 @@
         "brands": [
           {
             "name": "Arcam",
-            "url": "https://www.arcam.co.uk/"
+            "url": ""
           },
           {
             "name": "Audio Analogue",
-            "url": "https://www.audioanalogue.com/fr/"
+            "url": ""
           },
           {
             "name": "Bluesound",
-            "url": "https://francemajordiffusion.fr/marque/bluesound/"
+            "url": ""
           },
           {
             "name": "Cambridge Audio",
-            "url": "https://www.cambridgeaudio.com/eur/fr"
+            "url": ""
           },
           {
             "name": "EverSolo",
-            "url": "https://www.eversolo.com/"
+            "url": ""
           },
           {
             "name": "Lindemann",
-            "url": "https://www.jffdiffusion.fr/lindemann.html"
+            "url": ""
           },
           {
             "name": "Luxman",
-            "url": "https://www.luxman.com/"
+            "url": ""
           },
           {
             "name": "Naim",
-            "url": "https://www.naimaudio.com/fr"
+            "url": ""
           },
           {
             "name": "Pass Labs",
-            "url": "https://passlabs.fr/"
+            "url": ""
           },
           {
             "name": "Rega",
-            "url": "https://www.rega.co.uk/"
+            "url": ""
           },
           {
             "name": "Canor",
-            "url": "https://www.jffdiffusion.fr/canor.html"
+            "url": ""
           },
           {
             "name": "Roksan",
-            "url": "https://francemajordiffusion.fr/marque/roksan/"
+            "url": ""
           }
         ]
       },
@@ -133,15 +133,15 @@
           },
           {
             "name": "Rega",
-            "url": "https://www.rega.co.uk/"
+            "url": ""
           },
           {
             "name": "Metronome Technologie",
-            "url": "https://www.jffdiffusion.fr/metronome.html"
+            "url": ""
           },
           {
             "name": "Eversolo",
-            "url": "https://www.eversolo.com/"
+            "url": ""
           }
         ]
       },
@@ -150,11 +150,11 @@
         "brands": [
           {
             "name": "Acoustic Energy",
-            "url": "https://www.jffdiffusion.fr/acoustic-energy.html"
+            "url": ""
           },
           {
             "name": "EgglestonWorks",
-            "url": "https://egglestonworks.com/"
+            "url": ""
           },
           {
             "name": "Monitor Audio",
@@ -162,11 +162,11 @@
           },
           {
             "name": "Piega",
-            "url": "https://piega.ch/fr/about-us"
+            "url": ""
           },
           {
             "name": "Totem",
-            "url": "https://totemacoustic.com/product-category/loudspeakers/floorstanding-speakers/"
+            "url": ""
           },
           {
             "name": "Wilson Benesch",
@@ -174,7 +174,7 @@
           },
           {
             "name": "Indiana Line",
-            "url": "https://francemajordiffusion.fr/marque/indianaline/"
+            "url": ""
           }
         ]
       },
@@ -183,23 +183,23 @@
         "brands": [
           {
             "name": "Absolue Créations",
-            "url": "https://www.absoluecreations.com/"
+            "url": ""
           },
           {
             "name": "AudioQuest",
-            "url": "https://www.audioquest.com/fr?srsltid=AfmBOoqrOBbekj5IshFEGJwNfiVqpjrpKzGxQmOa4FVLz_Kz_bQpgdpK"
+            "url": ""
           },
           {
             "name": "Clarus",
-            "url": "https://www.jffdiffusion.fr/clarus-cables.html"
+            "url": ""
           },
           {
             "name": "Tributaries",
-            "url": "https://www.jffdiffusion.fr/clarus-cables.html"
+            "url": ""
           },
           {
             "name": "Tellurium Q",
-            "url": "https://telluriumq.com/"
+            "url": ""
           }
         ]
       },
@@ -208,11 +208,11 @@
         "brands": [
           {
             "name": "Solid Tech",
-            "url": "https://www.soundartsnetwork.com/marques/solid-tech/"
+            "url": ""
           },
           {
             "name": "Solidsteel",
-            "url": "https://solidsteel.it/"
+            "url": ""
           }
         ]
       },
@@ -225,15 +225,15 @@
           },
           {
             "name": "GigaWatt",
-            "url": "https://www.nextaudio.fr/gigawatt/"
+            "url": ""
           },
           {
             "name": "Torus Power",
-            "url": "https://www.jffdiffusion.fr/torus-power.html"
+            "url": ""
           },
           {
             "name": "Bada Audio",
-            "url": "https://www.jffdiffusion.fr/bada-audio.html"
+            "url": ""
           }
         ]
       }
