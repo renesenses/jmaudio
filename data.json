@@ -396,6 +396,21 @@
               "img/occasions/musical-fidelity-a1-final-edition-1780500269066-0jv7.jpg",
               "img/occasions/musical-fidelity-a1-final-edition-1780500277194-cihx.jpg"
             ]
+          },
+          {
+            "brand": "REGA",
+            "model": "Elex MK1",
+            "detail": "REGA Elex MK1 en bon état",
+            "price": "290 €",
+            "imageUrl": "img/occasions/rega-elex-mk1.jpg",
+            "description": "Ampli REGA Elex MK1 en bon état, fonctionnement ok. Entrée phono.",
+            "images": [
+              "img/occasions/rega-elex-mk1-1780503444583-15b5.jpg",
+              "img/occasions/rega-elex-mk1-1780503456702-xhis.jpg",
+              "img/occasions/rega-elex-mk1-1780503463252-1kbn.jpg",
+              "img/occasions/rega-elex-mk1-1780503469038-7llq.jpg",
+              "img/occasions/rega-elex-mk1-1780503475596-lnb0.jpg"
+            ]
           }
         ]
       },
@@ -618,5 +633,10 @@
   "img/occasions/musical-fidelity-a1-final-edition-1780500252792-9x8b": {},
   "img/occasions/musical-fidelity-a1-final-edition-1780500259534-7yc2": {},
   "img/occasions/musical-fidelity-a1-final-edition-1780500269066-0jv7": {},
-  "img/occasions/musical-fidelity-a1-final-edition-1780500277194-cihx": {}
+  "img/occasions/musical-fidelity-a1-final-edition-1780500277194-cihx": {},
+  "img/occasions/rega-elex-mk1-1780503444583-15b5": {},
+  "img/occasions/rega-elex-mk1-1780503456702-xhis": {},
+  "img/occasions/rega-elex-mk1-1780503463252-1kbn": {},
+  "img/occasions/rega-elex-mk1-1780503469038-7llq": {},
+  "img/occasions/rega-elex-mk1-1780503475596-lnb0": {}
 }
