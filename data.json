@@ -380,6 +380,22 @@
               "img/occasions/onair-vision-electronics-saphir-829-1778146769994-kdx0.jpg",
               "img/occasions/onair-vision-electronics-saphir-829-1778146777096-hjrz.jpg"
             ]
+          },
+          {
+            "brand": "Musical Fidelity ",
+            "model": "A1 Final Edition",
+            "detail": "très bon état et révisé",
+            "price": "620 €",
+            "imageUrl": "img/occasions/musical-fidelity-a1-final-edition.jpg",
+            "description": "Ampli MUSICAL FIDELITY A1 Final Edition fin des années 90, rare. Entièrement révisé, alimentation refaite et améliorée par rapport à l'originale, plus gros transfo.\nentrée phono MM/MC\nsérie limitée",
+            "images": [
+              "img/occasions/musical-fidelity-a1-final-edition-1780500239623-pi0o.jpg",
+              "img/occasions/musical-fidelity-a1-final-edition-1780500246419-j5o7.jpg",
+              "img/occasions/musical-fidelity-a1-final-edition-1780500252792-9x8b.jpg",
+              "img/occasions/musical-fidelity-a1-final-edition-1780500259534-7yc2.jpg",
+              "img/occasions/musical-fidelity-a1-final-edition-1780500269066-0jv7.jpg",
+              "img/occasions/musical-fidelity-a1-final-edition-1780500277194-cihx.jpg"
+            ]
           }
         ]
       },
@@ -596,5 +612,11 @@
   "img/occasions/rega-apollo-1779195781340-8ck1": {},
   "img/occasions/rega-apollo-1779195787461-glhj": {},
   "img/occasions/rega-apollo-1779195794227-z4tl": {},
-  "img/occasions/rega-apollo-1779195801541-10vp": {}
+  "img/occasions/rega-apollo-1779195801541-10vp": {},
+  "img/occasions/musical-fidelity-a1-final-edition-1780500239623-pi0o": {},
+  "img/occasions/musical-fidelity-a1-final-edition-1780500246419-j5o7": {},
+  "img/occasions/musical-fidelity-a1-final-edition-1780500252792-9x8b": {},
+  "img/occasions/musical-fidelity-a1-final-edition-1780500259534-7yc2": {},
+  "img/occasions/musical-fidelity-a1-final-edition-1780500269066-0jv7": {},
+  "img/occasions/musical-fidelity-a1-final-edition-1780500277194-cihx": {}
 }
