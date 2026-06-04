@@ -411,6 +411,22 @@
               "img/occasions/rega-elex-mk1-1780503469038-7llq.jpg",
               "img/occasions/rega-elex-mk1-1780503475596-lnb0.jpg"
             ]
+          },
+          {
+            "brand": "JC VERDIER",
+            "model": "Mono Bloc Triode",
+            "detail": "2 blocs mono en parfait état",
+            "price": "4500 €",
+            "imageUrl": "img/occasions/jc-verdier-mono-bloc-triode.jpg",
+            "description": "Rare, 2 blocs mono JC VERDIER Mono Bloc Triode 6c33c, entièrement révisés et en parfait état cosmétique et de fonctionnement.\nEnvoi impossible, à prendre sur place en magasin.",
+            "images": [
+              "img/occasions/jc-verdier-mono-bloc-triode-1780589486060-vuku.jpg",
+              "img/occasions/jc-verdier-mono-bloc-triode-1780589494149-nc2b.jpg",
+              "img/occasions/jc-verdier-mono-bloc-triode-1780589501477-cw3a.jpg",
+              "img/occasions/jc-verdier-mono-bloc-triode-1780589510158-jxiz.jpg",
+              "img/occasions/jc-verdier-mono-bloc-triode-1780589516278-wrsa.jpg",
+              "img/occasions/jc-verdier-mono-bloc-triode-1780589523282-jaqm.jpg"
+            ]
           }
         ]
       },
@@ -638,5 +654,11 @@
   "img/occasions/rega-elex-mk1-1780503456702-xhis": {},
   "img/occasions/rega-elex-mk1-1780503463252-1kbn": {},
   "img/occasions/rega-elex-mk1-1780503469038-7llq": {},
-  "img/occasions/rega-elex-mk1-1780503475596-lnb0": {}
+  "img/occasions/rega-elex-mk1-1780503475596-lnb0": {},
+  "img/occasions/jc-verdier-mono-bloc-triode-1780589486060-vuku": {},
+  "img/occasions/jc-verdier-mono-bloc-triode-1780589494149-nc2b": {},
+  "img/occasions/jc-verdier-mono-bloc-triode-1780589501477-cw3a": {},
+  "img/occasions/jc-verdier-mono-bloc-triode-1780589510158-jxiz": {},
+  "img/occasions/jc-verdier-mono-bloc-triode-1780589516278-wrsa": {},
+  "img/occasions/jc-verdier-mono-bloc-triode-1780589523282-jaqm": {}
 }
