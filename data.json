@@ -457,6 +457,20 @@
               "img/occasions/rega-apollo-1779195794227-z4tl.jpg",
               "img/occasions/rega-apollo-1779195801541-10vp.jpg"
             ]
+          },
+          {
+            "brand": "Rega",
+            "model": "Rega Dac",
+            "detail": "très bon état",
+            "price": "300 €",
+            "imageUrl": "img/occasions/rega-rega-dac.jpg",
+            "description": "Rega Dac en très bon état, un seul propriétaire.",
+            "images": [
+              "img/occasions/rega-rega-dac-1780676113145-sq1v.jpg",
+              "img/occasions/rega-rega-dac-1780676120092-bf42.jpg",
+              "img/occasions/rega-rega-dac-1780676126965-vkka.jpg",
+              "img/occasions/rega-rega-dac-1780676135638-ipv1.jpg"
+            ]
           }
         ]
       },
@@ -660,5 +674,9 @@
   "img/occasions/jc-verdier-mono-bloc-triode-1780589501477-cw3a": {},
   "img/occasions/jc-verdier-mono-bloc-triode-1780589510158-jxiz": {},
   "img/occasions/jc-verdier-mono-bloc-triode-1780589516278-wrsa": {},
-  "img/occasions/jc-verdier-mono-bloc-triode-1780589523282-jaqm": {}
+  "img/occasions/jc-verdier-mono-bloc-triode-1780589523282-jaqm": {},
+  "img/occasions/rega-rega-dac-1780676113145-sq1v": {},
+  "img/occasions/rega-rega-dac-1780676120092-bf42": {},
+  "img/occasions/rega-rega-dac-1780676126965-vkka": {},
+  "img/occasions/rega-rega-dac-1780676135638-ipv1": {}
 }
