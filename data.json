@@ -360,19 +360,6 @@
             ]
           },
           {
-            "brand": "ONAIR VISION Electronics",
-            "model": "Saphir 829",
-            "detail": "Excellent",
-            "price": "750 €",
-            "imageUrl": "img/occasions/onair-vision-electronics-saphir-829.jpg",
-            "description": "Petit ampli à tubes d'un fabricant Français, le Saphir 829 est équipé de tubes 829, 2x25w en classe A, il est capable de driver de nombreuses enceintes. Facture d'achat, doc, 2 tubes 829 en plus. 1 entrée RCA et une entrée Bluetooth. Pas de carton donc retrait magasin de préférence, même si un envoi reste possible. Dépôt vente cliente, une seule propriétaire.",
-            "images": [
-              "img/occasions/onair-vision-electronics-saphir-829-1778146761206-tthb.jpg",
-              "img/occasions/onair-vision-electronics-saphir-829-1778146769994-kdx0.jpg",
-              "img/occasions/onair-vision-electronics-saphir-829-1778146777096-hjrz.jpg"
-            ]
-          },
-          {
             "brand": "Musical Fidelity ",
             "model": "A1 Final Edition",
             "detail": "très bon état et révisé",
@@ -462,6 +449,15 @@
               "img/occasions/rega-rega-dac-1780676126965-vkka.jpg",
               "img/occasions/rega-rega-dac-1780676135638-ipv1.jpg"
             ]
+          },
+          {
+            "brand": "Bluesound",
+            "model": "Node 130",
+            "detail": "très bon état",
+            "price": "200 €",
+            "imageUrl": "",
+            "description": "Lecteur réseau BLUESOUND Node 130 noir, en très bon état, un seul propriétaire.\nPlus la boite ni les accessoires",
+            "images": []
           }
         ]
       },
