@@ -476,6 +476,18 @@
               "img/occasions/icos-fado-1785326446927-oyxr.jpg",
               "img/occasions/icos-fado-1785326459894-ws9s.jpg"
             ]
+          },
+          {
+            "brand": "REGA",
+            "model": "PL1 Plus",
+            "detail": "parfait état",
+            "price": "340 €",
+            "imageUrl": "img/occasions/rega-pl1-plus.jpg",
+            "description": "Platine REGA PL1 Plus blanche avec phono intégré, parfait état, un seul propriétaire. Envoi impossible",
+            "images": [
+              "img/occasions/rega-pl1-plus-1785334757707-f0xp.jpg",
+              "img/occasions/rega-pl1-plus-1785334764478-ki2q.jpg"
+            ]
           }
         ]
       },
@@ -691,5 +703,7 @@
   "img/occasions/icos-fado-1785326427552-n78v": {},
   "img/occasions/icos-fado-1785326435234-7v5j": {},
   "img/occasions/icos-fado-1785326446927-oyxr": {},
-  "img/occasions/icos-fado-1785326459894-ws9s": {}
+  "img/occasions/icos-fado-1785326459894-ws9s": {},
+  "img/occasions/rega-pl1-plus-1785334757707-f0xp": {},
+  "img/occasions/rega-pl1-plus-1785334764478-ki2q": {}
 }
