@@ -458,6 +458,24 @@
             "imageUrl": "",
             "description": "Lecteur réseau BLUESOUND Node 130 noir, en très bon état, un seul propriétaire.\nPlus la boite ni les accessoires",
             "images": []
+          },
+          {
+            "brand": "ICOS",
+            "model": "Fado",
+            "detail": "très bon état",
+            "price": "1150 €",
+            "imageUrl": "img/occasions/icos-fado.jpg",
+            "description": "Lecteur CD ICOS Fado noir, update Dac 24/192, lentille neuve, complet (carton, doc, télécommande, pastilles neuves) 1 seul propriétaire",
+            "images": [
+              "img/occasions/icos-fado-1785326376588-u6u0.jpg",
+              "img/occasions/icos-fado-1785326392433-gr4f.jpg",
+              "img/occasions/icos-fado-1785326399463-0ax7.jpg",
+              "img/occasions/icos-fado-1785326416170-l7x6.jpg",
+              "img/occasions/icos-fado-1785326427552-n78v.jpg",
+              "img/occasions/icos-fado-1785326435234-7v5j.jpg",
+              "img/occasions/icos-fado-1785326446927-oyxr.jpg",
+              "img/occasions/icos-fado-1785326459894-ws9s.jpg"
+            ]
           }
         ]
       },
@@ -665,5 +683,13 @@
   "img/occasions/rega-rega-dac-1780676113145-sq1v": {},
   "img/occasions/rega-rega-dac-1780676120092-bf42": {},
   "img/occasions/rega-rega-dac-1780676126965-vkka": {},
-  "img/occasions/rega-rega-dac-1780676135638-ipv1": {}
+  "img/occasions/rega-rega-dac-1780676135638-ipv1": {},
+  "img/occasions/icos-fado-1785326376588-u6u0": {},
+  "img/occasions/icos-fado-1785326392433-gr4f": {},
+  "img/occasions/icos-fado-1785326399463-0ax7": {},
+  "img/occasions/icos-fado-1785326416170-l7x6": {},
+  "img/occasions/icos-fado-1785326427552-n78v": {},
+  "img/occasions/icos-fado-1785326435234-7v5j": {},
+  "img/occasions/icos-fado-1785326446927-oyxr": {},
+  "img/occasions/icos-fado-1785326459894-ws9s": {}
 }
