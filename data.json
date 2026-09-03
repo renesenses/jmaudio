@@ -405,6 +405,24 @@
               "img/occasions/jc-verdier-mono-bloc-triode-1780589516278-wrsa.jpg",
               "img/occasions/jc-verdier-mono-bloc-triode-1780589523282-jaqm.jpg"
             ]
+          },
+          {
+            "brand": "PASS LABS",
+            "model": "INT250",
+            "detail": "parfait, appareil démo magasin",
+            "price": "11 990 €",
+            "imageUrl": "",
+            "description": "Ampli intégré PASS LABS INT250 en parfait état, appareil démo magasin avec garantie. Ampli capable de driver n'importe quelles enceintes\n mais en douceur.",
+            "images": []
+          },
+          {
+            "brand": "LUXMAN",
+            "model": "L507Z",
+            "detail": "parfait état",
+            "price": "7590 €",
+            "imageUrl": "",
+            "description": "Ampli LUXMAN L507Z Diapason d'or 2023. Un magnifique ampli au look vintage, excellente entrée phono MM/MC ce qui est rare. Un ampli de grande classe.\nappareil de démo magasin comme neuf.",
+            "images": []
           }
         ]
       },
