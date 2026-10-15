@@ -342,7 +342,7 @@
     "ctaButtonText": "Nous contacter",
     "categories": [
       {
-        "name": "Électronique",
+        "name": "Amplificateurs",
         "note": "",
         "compact": false,
         "products": [
@@ -396,7 +396,7 @@
             "detail": "parfait, appareil démo magasin",
             "price": "11 990 €",
             "imageUrl": "",
-            "description": "Ampli intégré PASS LABS INT250 en parfait état, appareil démo magasin avec garantie. Ampli capable de driver n'importe quelles enceintes\n mais en douceur.",
+            "description": "Ampli intégré PASS LABS INT250 en parfait état, appareil démo magasin avec garantie. Ampli capable de driver n'importe quelles enceintes\nmais en douceur.",
             "images": []
           },
           {
@@ -568,6 +568,24 @@
             "price": "1300 €",
             "imageUrl": "",
             "description": "",
+            "images": []
+          },
+          {
+            "brand": "TELLURIUM Q",
+            "model": "BLACK DIAMOND XLR",
+            "detail": "parfait",
+            "price": "1290 €",
+            "imageUrl": "",
+            "description": "câbles XLR en parfait état, boite, superbe écoute.",
+            "images": []
+          },
+          {
+            "brand": "REGA",
+            "model": "Power reference",
+            "detail": "bon état",
+            "price": "150 €",
+            "imageUrl": "",
+            "description": "A vendre, 2 câbles REGA Power Référence 1m50 en bon état, prix 150 € pièce",
             "images": []
           }
         ]
