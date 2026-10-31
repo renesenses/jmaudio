@@ -455,6 +455,24 @@
     return block;
   }
 
+  /* Téléversement : JPEG, PNG ou WebP seulement (extension ET type MIME).
+     L'extension écrite dans le dépôt est déduite du type, pas du nom. */
+  var IMAGE_TYPES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+  var IMAGE_EXTS = { jpg: true, jpeg: true, png: true, webp: true };
+  var IMAGE_REFUSED = 'Format refusé : JPEG, PNG ou WebP seulement.';
+
+  function imageExtension(file) {
+    var dot = file.name.lastIndexOf('.');
+    var ext = dot === -1 ? '' : file.name.slice(dot + 1).toLowerCase();
+    if (!Object.prototype.hasOwnProperty.call(IMAGE_EXTS, ext)) return '';
+    if (!Object.prototype.hasOwnProperty.call(IMAGE_TYPES, file.type)) return '';
+    return IMAGE_TYPES[file.type];
+  }
+
+  function acceptedImages(fileList) {
+    return Array.prototype.filter.call(fileList, function (f) { return !!imageExtension(f); });
+  }
+
   function slugify(str) {
     return str.toLowerCase()
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -476,14 +494,14 @@
       '</div>' +
       '<div class="form-group"><label>Modèle</label><input type="text" class="prod-model" value="' + escAttr(prod.model) + '"></div>' +
       '<div class="form-group"><label>Détail / État</label><input type="text" class="prod-detail" value="' + escAttr(prod.detail) + '"></div>' +
-      '<div class="form-group"><label>URL image principale (vide si pas d\'image)</label><div class="input-with-upload"><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"><button type="button" class="image-upload-btn btn-upload-main-image">Charger</button><input type="file" class="prod-main-image-input is-hidden" accept="image/*"><span class="image-upload-status prod-main-upload-status"></span></div></div>' +
+      '<div class="form-group"><label>URL image principale (vide si pas d\'image)</label><div class="input-with-upload"><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"><button type="button" class="image-upload-btn btn-upload-main-image">Charger</button><input type="file" class="prod-main-image-input is-hidden" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"><span class="image-upload-status prod-main-upload-status"></span></div></div>' +
       '<div class="form-group"><label>Description complète (visible sur la page détail)</label><textarea class="prod-description" rows="3">' + escHtml(prod.description || '') + '</textarea></div>' +
       '<div class="image-upload-zone">' +
         '<label>Images supplémentaires</label>' +
         '<div class="image-preview prod-images-preview"></div>' +
         '<div class="upload-actions">' +
           '<button type="button" class="image-upload-btn btn-upload-images">Ajouter des images</button>' +
-          '<input type="file" class="prod-images-input is-hidden" accept="image/*" multiple>' +
+          '<input type="file" class="prod-images-input is-hidden" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" multiple>' +
           '<span class="image-upload-status prod-upload-status"></span>' +
         '</div>' +
       '</div>';
@@ -505,9 +523,15 @@
     });
 
     fileInput.addEventListener('change', function () {
-      var files = fileInput.files;
-      if (!files.length) return;
+      if (!fileInput.files.length) return;
       var statusEl = block.querySelector('.prod-upload-status');
+      var files = acceptedImages(fileInput.files);
+      if (files.length < fileInput.files.length) {
+        statusEl.textContent = IMAGE_REFUSED;
+        statusEl.className = 'image-upload-status prod-upload-status error';
+        fileInput.value = '';
+        return;
+      }
       var brand = block.querySelector('.prod-brand').value || 'produit';
       var model = block.querySelector('.prod-model').value || '';
 
@@ -517,7 +541,7 @@
       statusEl.className = 'image-upload-status prod-upload-status';
 
       Array.prototype.forEach.call(files, function (file) {
-        var ext = file.name.split('.').pop().toLowerCase();
+        var ext = imageExtension(file);
         var filename = slugify(brand + '-' + model) + '-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4) + '.' + ext;
         var path = 'img/occasions/' + filename;
 
@@ -573,7 +597,13 @@
       var brand = block.querySelector('.prod-brand').value || 'produit';
       var model = block.querySelector('.prod-model').value || '';
 
-      var ext = file.name.split('.').pop().toLowerCase();
+      var ext = imageExtension(file);
+      if (!ext) {
+        statusEl.textContent = IMAGE_REFUSED;
+        statusEl.className = 'image-upload-status prod-main-upload-status error';
+        mainFileInput.value = '';
+        return;
+      }
       var filename = slugify(brand + '-' + model) + '.' + ext;
       var path = 'img/occasions/' + filename;
 
@@ -736,7 +766,7 @@
         '<div class="image-preview news-images-preview"></div>' +
         '<div class="upload-actions">' +
           '<button type="button" class="image-upload-btn btn-upload-news-images">Ajouter des images</button>' +
-          '<input type="file" class="news-images-input is-hidden" accept="image/*" multiple>' +
+          '<input type="file" class="news-images-input is-hidden" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" multiple>' +
           '<span class="image-upload-status news-upload-status"></span>' +
         '</div>' +
       '</div>';
@@ -756,9 +786,15 @@
     });
 
     fileInput.addEventListener('change', function () {
-      var files = fileInput.files;
-      if (!files.length) return;
+      if (!fileInput.files.length) return;
       var statusEl = block.querySelector('.news-upload-status');
+      var files = acceptedImages(fileInput.files);
+      if (files.length < fileInput.files.length) {
+        statusEl.textContent = IMAGE_REFUSED;
+        statusEl.className = 'image-upload-status news-upload-status error';
+        fileInput.value = '';
+        return;
+      }
       var title = block.querySelector('.news-item-title').value || 'actualite';
 
       var total = files.length;
@@ -767,7 +803,7 @@
       statusEl.className = 'image-upload-status news-upload-status';
 
       Array.prototype.forEach.call(files, function (file) {
-        var ext = file.name.split('.').pop().toLowerCase();
+        var ext = imageExtension(file);
         var filename = slugify(title) + '-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4) + '.' + ext;
         var path = 'img/news/' + filename;
 
