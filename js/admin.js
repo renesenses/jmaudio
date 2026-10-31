@@ -9,7 +9,10 @@
   var FILE_PATH = 'data.json';
   var API_BASE = 'https://api.github.com';
 
+  // Le jeton n'est gardé qu'en mémoire, le temps de la page : jamais dans
+  // localStorage ni sessionStorage, et aucune reconnexion automatique.
   var token = '';
+  var TOKEN_KEY = 'jmaudio_token';
   var currentData = null;
   var currentSha = '';
 
@@ -83,10 +86,14 @@
     fetchDataFromGitHub()
       .then(function (data) {
         currentData = data;
-        localStorage.setItem('jmaudio_token', token);
+        tokenInput.value = '';
         loginScreen.style.display = 'none';
         adminPanel.style.display = 'block';
         populateAllForms(data);
+        if (token.indexOf('ghp_') === 0) {
+          saveStatus.textContent = 'Jeton classique : remplacez-le par un jeton à portée fine.';
+          saveStatus.className = 'save-status error';
+        }
       })
       .catch(function (err) {
         token = '';
@@ -103,37 +110,17 @@
     token = '';
     currentData = null;
     currentSha = '';
-    localStorage.removeItem('jmaudio_token');
+    purgeStoredToken();
     adminPanel.style.display = 'none';
     loginScreen.style.display = 'flex';
     tokenInput.value = '';
   }
 
-  // Auto-login from stored token
-  function tryAutoLogin() {
-    var stored = localStorage.getItem('jmaudio_token');
-    if (stored) {
-      token = stored;
-      tokenInput.value = stored;
-      loginBtn.textContent = 'Connexion...';
-      loginBtn.disabled = true;
-
-      fetchDataFromGitHub()
-        .then(function (data) {
-          currentData = data;
-          loginScreen.hidden = true;
-          adminPanel.hidden = false;
-          populateAllForms(data);
-        })
-        .catch(function () {
-          token = '';
-          localStorage.removeItem('jmaudio_token');
-        })
-        .finally(function () {
-          loginBtn.textContent = 'Connexion';
-          loginBtn.disabled = false;
-        });
-    }
+  // Migration : efface tout jeton laissé par les anciennes versions
+  // de l'administration (reconnexion automatique supprimée).
+  function purgeStoredToken() {
+    try { window.localStorage.removeItem(TOKEN_KEY); } catch (e) { /* stockage indisponible */ }
+    try { window.sessionStorage.removeItem(TOKEN_KEY); } catch (e) { /* stockage indisponible */ }
   }
 
   /* =========================================
@@ -918,6 +905,6 @@
 
   initTabs();
   initAddButtons();
-  tryAutoLogin();
+  purgeStoredToken();
 
 })();
