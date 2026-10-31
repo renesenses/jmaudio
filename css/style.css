@@ -1485,3 +1485,23 @@ a.marque:hover {
 .breadcrumb span {
   color: var(--cream-muted);
 }
+
+/* --- Classes remplaçant les styles en ligne (Content-Security-Policy) --- */
+
+.is-hidden {
+  display: none !important;
+}
+
+.product-container {
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.product-not-found {
+  color: var(--cream-muted);
+}
+
+.contact-map-frame {
+  border: 0;
+  min-height: 300px;
+}

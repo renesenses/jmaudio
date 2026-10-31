@@ -1,12 +1,22 @@
 /* ============================================
    JM Audio — Sécurité partagée
    Chargé en premier sur chaque page (dans <head>).
+   - refus d'affichage dans un cadre tiers
+     (frame-ancestors n'est pas pris en compte dans une CSP en <meta>) ;
    - échappement HTML et validation des URL, utilisés par main.js,
      produit.js et admin.js pour tout contenu venant de data.json.
    ============================================ */
 
 (function () {
   'use strict';
+
+  /* --- Anti-cadre --- */
+  if (window.self !== window.top) {
+    document.documentElement.style.display = 'none';
+    try {
+      window.top.location.replace(window.self.location.href);
+    } catch (e) { /* cadre d'une autre origine : la page reste masquée */ }
+  }
 
   /* --- Échappement HTML (texte et valeurs d'attributs) --- */
   var ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };

@@ -565,3 +565,13 @@ body {
     font-size: 0.8rem;
   }
 }
+
+/* --- Classes remplaçant les styles en ligne (Content-Security-Policy) --- */
+
+.is-hidden {
+  display: none !important;
+}
+
+.upload-actions {
+  margin-top: 0.5rem;
+}

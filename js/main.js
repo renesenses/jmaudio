@@ -312,7 +312,7 @@
         '</div>' +
       '</div>' +
       (mapUrl ? '<div class="contact-map animate">' +
-        '<iframe src="' + esc(mapUrl) + '" width="100%" height="100%" style="border:0; min-height: 300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation JM Audio à Dijon"></iframe>' +
+        '<iframe src="' + esc(mapUrl) + '" width="100%" height="100%" class="contact-map-frame" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation JM Audio à Dijon"></iframe>' +
       '</div>' : '');
   }
 
@@ -326,7 +326,7 @@
       '<h3 class="contact-form-title">Nous écrire</h3>' +
       '<form id="contact-form" class="contact-form" action="https://formspree.io/f/xlgzwrwk" method="POST">' +
         '<input type="hidden" name="_replyto" value="">' +
-        '<input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">' +
+        '<input type="text" name="_gotcha" class="is-hidden" tabindex="-1" autocomplete="off">' +
         '<div class="form-row-contact">' +
           '<div class="form-field"><label for="cf-name">Nom</label><input type="text" id="cf-name" name="name" required autocomplete="name"></div>' +
           '<div class="form-field"><label for="cf-email">Email</label><input type="email" id="cf-email" name="email" required autocomplete="email"></div>' +

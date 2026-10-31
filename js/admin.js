@@ -476,14 +476,14 @@
       '</div>' +
       '<div class="form-group"><label>Modèle</label><input type="text" class="prod-model" value="' + escAttr(prod.model) + '"></div>' +
       '<div class="form-group"><label>Détail / État</label><input type="text" class="prod-detail" value="' + escAttr(prod.detail) + '"></div>' +
-      '<div class="form-group"><label>URL image principale (vide si pas d\'image)</label><div class="input-with-upload"><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"><button type="button" class="image-upload-btn btn-upload-main-image">Charger</button><input type="file" class="prod-main-image-input" accept="image/*" style="display:none;"><span class="image-upload-status prod-main-upload-status"></span></div></div>' +
+      '<div class="form-group"><label>URL image principale (vide si pas d\'image)</label><div class="input-with-upload"><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"><button type="button" class="image-upload-btn btn-upload-main-image">Charger</button><input type="file" class="prod-main-image-input is-hidden" accept="image/*"><span class="image-upload-status prod-main-upload-status"></span></div></div>' +
       '<div class="form-group"><label>Description complète (visible sur la page détail)</label><textarea class="prod-description" rows="3">' + escHtml(prod.description || '') + '</textarea></div>' +
       '<div class="image-upload-zone">' +
         '<label>Images supplémentaires</label>' +
         '<div class="image-preview prod-images-preview"></div>' +
-        '<div style="margin-top: 0.5rem;">' +
+        '<div class="upload-actions">' +
           '<button type="button" class="image-upload-btn btn-upload-images">Ajouter des images</button>' +
-          '<input type="file" class="prod-images-input" accept="image/*" multiple style="display:none;">' +
+          '<input type="file" class="prod-images-input is-hidden" accept="image/*" multiple>' +
           '<span class="image-upload-status prod-upload-status"></span>' +
         '</div>' +
       '</div>';
@@ -734,9 +734,9 @@
       '<div class="image-upload-zone">' +
         '<label>Images (la première sera affichée par défaut, rotation automatique sur le site)</label>' +
         '<div class="image-preview news-images-preview"></div>' +
-        '<div style="margin-top: 0.5rem;">' +
+        '<div class="upload-actions">' +
           '<button type="button" class="image-upload-btn btn-upload-news-images">Ajouter des images</button>' +
-          '<input type="file" class="news-images-input" accept="image/*" multiple style="display:none;">' +
+          '<input type="file" class="news-images-input is-hidden" accept="image/*" multiple>' +
           '<span class="image-upload-status news-upload-status"></span>' +
         '</div>' +
       '</div>';
