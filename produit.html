@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/securite.js"></script>
 </head>
 <body>
 
@@ -98,6 +99,9 @@
   (function () {
     'use strict';
 
+    var escHtml = window.JMSecu.esc;
+    var safeUrl = window.JMSecu.safeUrl;
+
     var params = new URLSearchParams(window.location.search);
     var catIndex = parseInt(params.get('cat'), 10);
     var prodIndex = parseInt(params.get('prod'), 10);
@@ -120,7 +124,8 @@
         var seoTitle = prod.brand + ' ' + prod.model + ' occasion — JM Audio Dijon';
         var seoDesc = prod.brand + ' ' + prod.model + ' d\'occasion à ' + prod.price + ' chez JM Audio Dijon. ' + (prod.detail || 'Vérifié et garanti par nos soins.') + ' Revendeur hi-fi haut de gamme.';
         var seoUrl = 'https://www.jmaudio.fr/produit.html?cat=' + catIndex + '&prod=' + prodIndex;
-        var seoImg = prod.imageUrl ? 'https://www.jmaudio.fr/' + prod.imageUrl : 'https://www.jmaudio.fr/img/auditorium.jpg';
+        var mainUrl = safeUrl(prod.imageUrl);
+        var seoImg = mainUrl ? 'https://www.jmaudio.fr/' + mainUrl : 'https://www.jmaudio.fr/img/auditorium.jpg';
 
         document.title = seoTitle;
         updateMeta('description', seoDesc);
@@ -157,8 +162,8 @@
             }
           }
         };
-        if (prod.imageUrl) {
-          productSchema.image = 'https://www.jmaudio.fr/' + prod.imageUrl;
+        if (mainUrl) {
+          productSchema.image = 'https://www.jmaudio.fr/' + mainUrl;
         }
         injectJsonLd(productSchema);
 
@@ -180,12 +185,13 @@
 
         // Build all images array (main image + additional images)
         var allImages = [];
-        if (prod.imageUrl) {
-          allImages.push(prod.imageUrl);
+        if (mainUrl) {
+          allImages.push(mainUrl);
         }
         if (prod.images && prod.images.length) {
           prod.images.forEach(function (img) {
-            if (img) allImages.push(img);
+            var u = safeUrl(img);
+            if (u) allImages.push(u);
           });
         }
 
@@ -195,14 +201,14 @@
         html += '<div class="product-gallery">';
         if (allImages.length > 0) {
           html += '<div class="product-main-img" id="main-img-container">' +
-            '<img src="' + allImages[0] + '" alt="' + escHtml(prod.brand + ' ' + prod.model) + '" id="main-img">' +
+            '<img src="' + escHtml(allImages[0]) + '" alt="' + escHtml(prod.brand + ' ' + prod.model) + '" id="main-img">' +
             '</div>';
           if (allImages.length > 1) {
             html += '<div class="product-thumbs">';
             allImages.forEach(function (img, i) {
               var activeClass = i === 0 ? ' active' : '';
               html += '<div class="product-thumb' + activeClass + '" data-index="' + i + '">' +
-                '<img src="' + img + '" alt="Photo ' + (i + 1) + '">' +
+                '<img src="' + escHtml(img) + '" alt="Photo ' + (i + 1) + '">' +
                 '</div>';
             });
             html += '</div>';
@@ -335,11 +341,6 @@
       script.type = 'application/ld+json';
       script.textContent = JSON.stringify(obj);
       document.head.appendChild(script);
-    }
-
-    function escHtml(str) {
-      if (!str) return '';
-      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
   })();
   </script>

@@ -901,15 +901,9 @@
      Utilities
      ========================================= */
 
-  function escAttr(str) {
-    if (!str) return '';
-    return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  function escHtml(str) {
-    if (!str) return '';
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
+  // Échappement commun au site public (js/securite.js).
+  var escAttr = window.JMSecu.esc;
+  var escHtml = window.JMSecu.esc;
 
   /* =========================================
      Init
