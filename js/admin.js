@@ -190,7 +190,7 @@
 
   function populateAllForms(data) {
     // Simple fields (data-path)
-    document.querySelectorAll('[data-path]').forEach(function (el) {
+    document.querySelectorAll(FORM_FIELDS).forEach(function (el) {
       var val = getNestedValue(data, el.dataset.path);
       if (val !== undefined) {
         if (el.type === 'checkbox') {
@@ -210,6 +210,12 @@
     }
     renderOccasionsCategories(data.occasions.categories);
   }
+
+  // Champs simples liés à data.json : seuls les champs de formulaire de
+  // l'administration portent data-path (les vignettes d'images utilisent
+  // data-img ; avant, elles étaient collectées comme des champs et créaient
+  // des clés « img/... » à la racine de data.json).
+  var FORM_FIELDS = '#admin-panel input[data-path], #admin-panel textarea[data-path], #admin-panel select[data-path]';
 
   function getNestedValue(obj, path) {
     return path.split('.').reduce(function (o, key) {
@@ -233,7 +239,7 @@
 
   function collectAllForms() {
     // Simple fields
-    document.querySelectorAll('[data-path]').forEach(function (el) {
+    document.querySelectorAll(FORM_FIELDS).forEach(function (el) {
       if (el.type === 'checkbox') {
         setNestedValue(currentData, el.dataset.path, el.checked);
       } else {
@@ -656,7 +662,7 @@
   function createImagePreviewItem(imgPath, productBlock) {
     var item = document.createElement('div');
     item.className = 'image-preview-item';
-    item.dataset.path = imgPath;
+    item.dataset.img = imgPath;
     item.innerHTML =
       '<img src="' + escAttr(imgPath) + '" alt="">' +
       '<button type="button" class="image-remove-btn" title="Supprimer">&times;</button>';
@@ -708,7 +714,7 @@
       block.querySelectorAll('.nested-block').forEach(function (pb) {
         var imgPaths = [];
         pb.querySelectorAll('.prod-images-preview .image-preview-item').forEach(function (item) {
-          imgPaths.push(item.dataset.path);
+          imgPaths.push(item.dataset.img);
         });
         products.push({
           brand: pb.querySelector('.prod-brand').value,
@@ -852,7 +858,7 @@
   function createNewsImagePreviewItem(imgPath, newsBlock) {
     var item = document.createElement('div');
     item.className = 'image-preview-item';
-    item.dataset.path = imgPath;
+    item.dataset.img = imgPath;
     item.innerHTML =
       '<img src="' + escAttr(imgPath) + '" alt="">' +
       '<button type="button" class="image-remove-btn" title="Supprimer">&times;</button>';
@@ -870,7 +876,7 @@
     document.querySelectorAll('#news-items-list .repeatable-block').forEach(function (block) {
       var imgPaths = [];
       block.querySelectorAll('.news-images-preview .image-preview-item').forEach(function (item) {
-        imgPaths.push(item.dataset.path);
+        imgPaths.push(item.dataset.img);
       });
       items.push({
         date: block.querySelector('.news-date').value,
