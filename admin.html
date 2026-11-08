@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; frame-src 'none'; form-action 'none'; object-src 'none'; base-uri 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JM Audio — Administration</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
@@ -9,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/admin.css">
+  <script src="js/securite.js"></script>
 </head>
 <body>
 
@@ -18,19 +21,23 @@
       <h1>JM Audio</h1>
       <p class="login-subtitle">Administration du site</p>
       <div class="login-field">
-        <label for="github-token">Personal Access Token GitHub</label>
-        <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
+        <label for="github-token">Jeton GitHub à portée fine</label>
+        <input type="password" id="github-token" placeholder="github_pat_xxxxxxxxxxxx" autocomplete="off">
       </div>
       <button id="login-btn" class="btn btn-primary">Connexion</button>
       <p id="login-error" class="login-error" hidden></p>
       <details class="login-help">
-        <summary>Comment obtenir un token ?</summary>
+        <summary>Comment obtenir un jeton ?</summary>
         <ol>
-          <li>Aller sur <strong>GitHub &gt; Settings &gt; Developer settings &gt; Personal access tokens &gt; Tokens (classic)</strong></li>
-          <li>Cliquer <strong>Generate new token (classic)</strong></li>
-          <li>Cocher le scope <strong>repo</strong> (accès complet aux repos)</li>
-          <li>Copier le token et le coller ci-dessus</li>
+          <li>Aller sur <strong>GitHub &gt; Settings &gt; Developer settings &gt; Personal access tokens &gt; Fine-grained tokens</strong></li>
+          <li>Cliquer <strong>Generate new token</strong></li>
+          <li><strong>Expiration</strong> : courte (30 à 90 jours au plus)</li>
+          <li><strong>Repository access</strong> : <strong>Only select repositories</strong>, puis le seul dépôt <strong>renesenses/jmaudio</strong></li>
+          <li><strong>Permissions &gt; Repository permissions</strong> : <strong>Contents : Read and write</strong>, et rien d'autre</li>
+          <li>Copier le jeton et le coller ci-dessus</li>
         </ol>
+        <p>Les jetons « classic » (qui commencent par <code>ghp_</code>) sont refusés : seul un jeton à portée fine, qui commence par <code>github_pat_</code>, permet de se connecter.</p>
+        <p>Le jeton n'est pas enregistré dans le navigateur : il est oublié à la fermeture ou au rechargement de la page. Pensez à cliquer « Se déconnecter » en fin de session.</p>
       </details>
     </div>
   </div>
@@ -45,7 +52,7 @@
         <div class="admin-header-actions">
           <span id="save-status" class="save-status"></span>
           <button id="save-btn" class="btn btn-primary">Enregistrer</button>
-          <button id="logout-btn" class="btn btn-secondary">Déconnexion</button>
+          <button id="logout-btn" class="btn btn-secondary">Se déconnecter</button>
         </div>
       </div>
     </header>

@@ -9,7 +9,10 @@
   var FILE_PATH = 'data.json';
   var API_BASE = 'https://api.github.com';
 
+  // Le jeton n'est gardé qu'en mémoire, le temps de la page : jamais dans
+  // localStorage ni sessionStorage, et aucune reconnexion automatique.
   var token = '';
+  var TOKEN_KEY = 'jmaudio_token';
   var currentData = null;
   var currentSha = '';
 
@@ -47,9 +50,8 @@
   }
 
   function apiHeaders() {
-    var prefix = token.startsWith('github_pat_') ? 'Bearer' : 'token';
     return {
-      'Authorization': prefix + ' ' + token,
+      'Authorization': 'Bearer ' + token,
       'Accept': 'application/vnd.github.v3+json'
     };
   }
@@ -75,6 +77,13 @@
       showError('Veuillez saisir un token.');
       return;
     }
+    // Seul un jeton à portée fine (github_pat_) est accepté : un jeton
+    // classique est refusé avant tout appel réseau.
+    if (t.indexOf('github_pat_') !== 0) {
+      tokenInput.value = '';
+      showError('Ce jeton n\'est pas accepté. Seul un jeton GitHub à portée fine (il commence par « github_pat_ ») peut être utilisé. Voir « Comment obtenir un jeton ? » ci-dessous.');
+      return;
+    }
     hideError();
     loginBtn.textContent = 'Connexion...';
     loginBtn.disabled = true;
@@ -83,7 +92,7 @@
     fetchDataFromGitHub()
       .then(function (data) {
         currentData = data;
-        localStorage.setItem('jmaudio_token', token);
+        tokenInput.value = '';
         loginScreen.style.display = 'none';
         adminPanel.style.display = 'block';
         populateAllForms(data);
@@ -103,37 +112,17 @@
     token = '';
     currentData = null;
     currentSha = '';
-    localStorage.removeItem('jmaudio_token');
+    purgeStoredToken();
     adminPanel.style.display = 'none';
     loginScreen.style.display = 'flex';
     tokenInput.value = '';
   }
 
-  // Auto-login from stored token
-  function tryAutoLogin() {
-    var stored = localStorage.getItem('jmaudio_token');
-    if (stored) {
-      token = stored;
-      tokenInput.value = stored;
-      loginBtn.textContent = 'Connexion...';
-      loginBtn.disabled = true;
-
-      fetchDataFromGitHub()
-        .then(function (data) {
-          currentData = data;
-          loginScreen.hidden = true;
-          adminPanel.hidden = false;
-          populateAllForms(data);
-        })
-        .catch(function () {
-          token = '';
-          localStorage.removeItem('jmaudio_token');
-        })
-        .finally(function () {
-          loginBtn.textContent = 'Connexion';
-          loginBtn.disabled = false;
-        });
-    }
+  // Migration : efface tout jeton laissé par les anciennes versions
+  // de l'administration (reconnexion automatique supprimée).
+  function purgeStoredToken() {
+    try { window.localStorage.removeItem(TOKEN_KEY); } catch (e) { /* stockage indisponible */ }
+    try { window.sessionStorage.removeItem(TOKEN_KEY); } catch (e) { /* stockage indisponible */ }
   }
 
   /* =========================================
@@ -203,7 +192,7 @@
 
   function populateAllForms(data) {
     // Simple fields (data-path)
-    document.querySelectorAll('[data-path]').forEach(function (el) {
+    document.querySelectorAll(FORM_FIELDS).forEach(function (el) {
       var val = getNestedValue(data, el.dataset.path);
       if (val !== undefined) {
         if (el.type === 'checkbox') {
@@ -223,6 +212,12 @@
     }
     renderOccasionsCategories(data.occasions.categories);
   }
+
+  // Champs simples liés à data.json : seuls les champs de formulaire de
+  // l'administration portent data-path (les vignettes d'images utilisent
+  // data-img ; avant, elles étaient collectées comme des champs et créaient
+  // des clés « img/... » à la racine de data.json).
+  var FORM_FIELDS = '#admin-panel input[data-path], #admin-panel textarea[data-path], #admin-panel select[data-path]';
 
   function getNestedValue(obj, path) {
     return path.split('.').reduce(function (o, key) {
@@ -246,7 +241,7 @@
 
   function collectAllForms() {
     // Simple fields
-    document.querySelectorAll('[data-path]').forEach(function (el) {
+    document.querySelectorAll(FORM_FIELDS).forEach(function (el) {
       if (el.type === 'checkbox') {
         setNestedValue(currentData, el.dataset.path, el.checked);
       } else {
@@ -468,6 +463,24 @@
     return block;
   }
 
+  /* Téléversement : JPEG, PNG ou WebP seulement (extension ET type MIME).
+     L'extension écrite dans le dépôt est déduite du type, pas du nom. */
+  var IMAGE_TYPES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+  var IMAGE_EXTS = { jpg: true, jpeg: true, png: true, webp: true };
+  var IMAGE_REFUSED = 'Format refusé : JPEG, PNG ou WebP seulement.';
+
+  function imageExtension(file) {
+    var dot = file.name.lastIndexOf('.');
+    var ext = dot === -1 ? '' : file.name.slice(dot + 1).toLowerCase();
+    if (!Object.prototype.hasOwnProperty.call(IMAGE_EXTS, ext)) return '';
+    if (!Object.prototype.hasOwnProperty.call(IMAGE_TYPES, file.type)) return '';
+    return IMAGE_TYPES[file.type];
+  }
+
+  function acceptedImages(fileList) {
+    return Array.prototype.filter.call(fileList, function (f) { return !!imageExtension(f); });
+  }
+
   function slugify(str) {
     return str.toLowerCase()
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -489,14 +502,14 @@
       '</div>' +
       '<div class="form-group"><label>Modèle</label><input type="text" class="prod-model" value="' + escAttr(prod.model) + '"></div>' +
       '<div class="form-group"><label>Détail / État</label><input type="text" class="prod-detail" value="' + escAttr(prod.detail) + '"></div>' +
-      '<div class="form-group"><label>URL image principale (vide si pas d\'image)</label><div class="input-with-upload"><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"><button type="button" class="image-upload-btn btn-upload-main-image">Charger</button><input type="file" class="prod-main-image-input" accept="image/*" style="display:none;"><span class="image-upload-status prod-main-upload-status"></span></div></div>' +
+      '<div class="form-group"><label>URL image principale (vide si pas d\'image)</label><div class="input-with-upload"><input type="text" class="prod-image" value="' + escAttr(prod.imageUrl) + '"><button type="button" class="image-upload-btn btn-upload-main-image">Charger</button><input type="file" class="prod-main-image-input is-hidden" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"><span class="image-upload-status prod-main-upload-status"></span></div></div>' +
       '<div class="form-group"><label>Description complète (visible sur la page détail)</label><textarea class="prod-description" rows="3">' + escHtml(prod.description || '') + '</textarea></div>' +
       '<div class="image-upload-zone">' +
         '<label>Images supplémentaires</label>' +
         '<div class="image-preview prod-images-preview"></div>' +
-        '<div style="margin-top: 0.5rem;">' +
+        '<div class="upload-actions">' +
           '<button type="button" class="image-upload-btn btn-upload-images">Ajouter des images</button>' +
-          '<input type="file" class="prod-images-input" accept="image/*" multiple style="display:none;">' +
+          '<input type="file" class="prod-images-input is-hidden" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" multiple>' +
           '<span class="image-upload-status prod-upload-status"></span>' +
         '</div>' +
       '</div>';
@@ -518,9 +531,15 @@
     });
 
     fileInput.addEventListener('change', function () {
-      var files = fileInput.files;
-      if (!files.length) return;
+      if (!fileInput.files.length) return;
       var statusEl = block.querySelector('.prod-upload-status');
+      var files = acceptedImages(fileInput.files);
+      if (files.length < fileInput.files.length) {
+        statusEl.textContent = IMAGE_REFUSED;
+        statusEl.className = 'image-upload-status prod-upload-status error';
+        fileInput.value = '';
+        return;
+      }
       var brand = block.querySelector('.prod-brand').value || 'produit';
       var model = block.querySelector('.prod-model').value || '';
 
@@ -530,7 +549,7 @@
       statusEl.className = 'image-upload-status prod-upload-status';
 
       Array.prototype.forEach.call(files, function (file) {
-        var ext = file.name.split('.').pop().toLowerCase();
+        var ext = imageExtension(file);
         var filename = slugify(brand + '-' + model) + '-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4) + '.' + ext;
         var path = 'img/occasions/' + filename;
 
@@ -586,7 +605,13 @@
       var brand = block.querySelector('.prod-brand').value || 'produit';
       var model = block.querySelector('.prod-model').value || '';
 
-      var ext = file.name.split('.').pop().toLowerCase();
+      var ext = imageExtension(file);
+      if (!ext) {
+        statusEl.textContent = IMAGE_REFUSED;
+        statusEl.className = 'image-upload-status prod-main-upload-status error';
+        mainFileInput.value = '';
+        return;
+      }
       var filename = slugify(brand + '-' + model) + '.' + ext;
       var path = 'img/occasions/' + filename;
 
@@ -639,15 +664,21 @@
   function createImagePreviewItem(imgPath, productBlock) {
     var item = document.createElement('div');
     item.className = 'image-preview-item';
-    item.dataset.path = imgPath;
+    item.dataset.img = imgPath;
     item.innerHTML =
-      '<img src="' + escAttr(imgPath) + '" alt="">' +
+      '<img src="' + escAttr(window.JMSecu.safeUrl(imgPath)) + '" alt="">' +
       '<button type="button" class="image-remove-btn" title="Supprimer">&times;</button>';
 
     item.querySelector('.image-remove-btn').addEventListener('click', function () {
+      var statusEl = productBlock.querySelector('.prod-upload-status');
+      // Seules les images téléversées par l'administration peuvent être supprimées.
+      if (!/^img\/(occasions|news)\/[A-Za-z0-9._-]+$/.test(imgPath) || imgPath.indexOf('..') !== -1) {
+        statusEl.textContent = 'Suppression refusée : chemin d\'image non reconnu.';
+        statusEl.className = 'image-upload-status prod-upload-status error';
+        return;
+      }
       if (!confirm('Supprimer cette image du repo ?')) return;
 
-      var statusEl = productBlock.querySelector('.prod-upload-status');
       statusEl.textContent = 'Suppression...';
 
       // Get the file SHA first
@@ -691,7 +722,7 @@
       block.querySelectorAll('.nested-block').forEach(function (pb) {
         var imgPaths = [];
         pb.querySelectorAll('.prod-images-preview .image-preview-item').forEach(function (item) {
-          imgPaths.push(item.dataset.path);
+          imgPaths.push(item.dataset.img);
         });
         products.push({
           brand: pb.querySelector('.prod-brand').value,
@@ -747,9 +778,9 @@
       '<div class="image-upload-zone">' +
         '<label>Images (la première sera affichée par défaut, rotation automatique sur le site)</label>' +
         '<div class="image-preview news-images-preview"></div>' +
-        '<div style="margin-top: 0.5rem;">' +
+        '<div class="upload-actions">' +
           '<button type="button" class="image-upload-btn btn-upload-news-images">Ajouter des images</button>' +
-          '<input type="file" class="news-images-input" accept="image/*" multiple style="display:none;">' +
+          '<input type="file" class="news-images-input is-hidden" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" multiple>' +
           '<span class="image-upload-status news-upload-status"></span>' +
         '</div>' +
       '</div>';
@@ -769,9 +800,15 @@
     });
 
     fileInput.addEventListener('change', function () {
-      var files = fileInput.files;
-      if (!files.length) return;
+      if (!fileInput.files.length) return;
       var statusEl = block.querySelector('.news-upload-status');
+      var files = acceptedImages(fileInput.files);
+      if (files.length < fileInput.files.length) {
+        statusEl.textContent = IMAGE_REFUSED;
+        statusEl.className = 'image-upload-status news-upload-status error';
+        fileInput.value = '';
+        return;
+      }
       var title = block.querySelector('.news-item-title').value || 'actualite';
 
       var total = files.length;
@@ -780,7 +817,7 @@
       statusEl.className = 'image-upload-status news-upload-status';
 
       Array.prototype.forEach.call(files, function (file) {
-        var ext = file.name.split('.').pop().toLowerCase();
+        var ext = imageExtension(file);
         var filename = slugify(title) + '-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4) + '.' + ext;
         var path = 'img/news/' + filename;
 
@@ -829,9 +866,9 @@
   function createNewsImagePreviewItem(imgPath, newsBlock) {
     var item = document.createElement('div');
     item.className = 'image-preview-item';
-    item.dataset.path = imgPath;
+    item.dataset.img = imgPath;
     item.innerHTML =
-      '<img src="' + escAttr(imgPath) + '" alt="">' +
+      '<img src="' + escAttr(window.JMSecu.safeUrl(imgPath)) + '" alt="">' +
       '<button type="button" class="image-remove-btn" title="Supprimer">&times;</button>';
 
     item.querySelector('.image-remove-btn').addEventListener('click', function () {
@@ -847,7 +884,7 @@
     document.querySelectorAll('#news-items-list .repeatable-block').forEach(function (block) {
       var imgPaths = [];
       block.querySelectorAll('.news-images-preview .image-preview-item').forEach(function (item) {
-        imgPaths.push(item.dataset.path);
+        imgPaths.push(item.dataset.img);
       });
       items.push({
         date: block.querySelector('.news-date').value,
@@ -901,15 +938,9 @@
      Utilities
      ========================================= */
 
-  function escAttr(str) {
-    if (!str) return '';
-    return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  function escHtml(str) {
-    if (!str) return '';
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
+  // Échappement commun au site public (js/securite.js).
+  var escAttr = window.JMSecu.esc;
+  var escHtml = window.JMSecu.esc;
 
   /* =========================================
      Init
@@ -924,6 +955,6 @@
 
   initTabs();
   initAddButtons();
-  tryAutoLogin();
+  purgeStoredToken();
 
 })();

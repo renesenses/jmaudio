@@ -5,6 +5,13 @@
 (function () {
   'use strict';
 
+  // Tout contenu de data.json passe par esc() (texte, attributs) et
+  // safeUrl() (src, href) avant d'être inséré dans le HTML.
+  var esc = window.JMSecu.esc;
+  var escLines = window.JMSecu.escLines;
+  var safeUrl = window.JMSecu.safeUrl;
+  var safeMapUrl = window.JMSecu.safeMapUrl;
+
   /* --- SVG Icon Registry --- */
   var ICONS = {
     headphones: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>',
@@ -17,7 +24,7 @@
   function renderHero(data) {
     var h = data.hero;
     document.getElementById('hero-subtitle').textContent = h.subtitle;
-    document.getElementById('hero-title').innerHTML = h.title + '<br><em>' + h.titleEmphasis + '</em>';
+    document.getElementById('hero-title').innerHTML = esc(h.title) + '<br><em>' + esc(h.titleEmphasis) + '</em>';
     document.getElementById('hero-cta').textContent = h.ctaText;
   }
 
@@ -38,7 +45,7 @@
 
       p.carouselImages.forEach(function (img, i) {
         trackHtml += '<div class="carousel-slide' + (i === 0 ? ' active' : '') + '">' +
-          '<img src="' + img.url + '" alt="' + img.alt + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '">' +
+          '<img src="' + esc(safeUrl(img.url)) + '" alt="' + esc(img.alt) + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '">' +
           '</div>';
         dotsHtml += '<button class="carousel-dot' + (i === 0 ? ' active' : '') + '" aria-label="Photo ' + (i + 1) + '"></button>';
       });
@@ -59,9 +66,9 @@
     var html = '';
     p.cards.forEach(function (card) {
       html += '<div class="presentation-card animate">' +
-        '<div class="presentation-number">' + card.number + '</div>' +
-        '<h3>' + card.title + '</h3>' +
-        '<p>' + card.description + '</p>' +
+        '<div class="presentation-number">' + esc(card.number) + '</div>' +
+        '<h3>' + esc(card.title) + '</h3>' +
+        '<p>' + esc(card.description) + '</p>' +
         '</div>';
     });
     grid.innerHTML = html;
@@ -121,13 +128,14 @@
     var html = '';
     m.categories.forEach(function (cat) {
       html += '<div class="marques-category animate">' +
-        '<h3 class="marques-category-title">' + cat.name + '</h3>' +
+        '<h3 class="marques-category-title">' + esc(cat.name) + '</h3>' +
         '<div class="marques-grid">';
       cat.brands.forEach(function (brand) {
-        if (brand.url) {
-          html += '<a href="' + brand.url + '" class="marque" target="_blank" rel="noopener">' + brand.name + '</a>';
+        var brandUrl = safeUrl(brand.url);
+        if (brandUrl) {
+          html += '<a href="' + esc(brandUrl) + '" class="marque" target="_blank" rel="noopener">' + esc(brand.name) + '</a>';
         } else {
-          html += '<span class="marque">' + brand.name + '</span>';
+          html += '<span class="marque">' + esc(brand.name) + '</span>';
         }
       });
       html += '</div></div>';
@@ -141,11 +149,11 @@
 
     var html = '';
     s.cards.forEach(function (card) {
-      var iconSvg = ICONS[card.icon] || '';
+      var iconSvg = Object.prototype.hasOwnProperty.call(ICONS, card.icon) ? ICONS[card.icon] : '';
       html += '<div class="service-card animate">' +
         '<div class="service-icon">' + iconSvg + '</div>' +
-        '<h3>' + card.title + '</h3>' +
-        '<p>' + card.description + '</p>' +
+        '<h3>' + esc(card.title) + '</h3>' +
+        '<p>' + esc(card.description) + '</p>' +
         '</div>';
     });
     document.getElementById('services-cards').innerHTML = html;
@@ -158,8 +166,8 @@
 
     var html = '';
     o.categories.forEach(function (cat, catIndex) {
-      var noteHtml = cat.note ? ' <span class="occasions-note">' + cat.note + '</span>' : '';
-      html += '<h3 class="occasions-category-title animate">' + cat.name + noteHtml + '</h3>';
+      var noteHtml = cat.note ? ' <span class="occasions-note">' + esc(cat.note) + '</span>' : '';
+      html += '<h3 class="occasions-category-title animate">' + esc(cat.name) + noteHtml + '</h3>';
 
       var gridClass = cat.compact ? 'occasions-grid occasions-grid-compact' : 'occasions-grid';
       html += '<div class="' + gridClass + '">';
@@ -169,21 +177,22 @@
         html += '<a href="produit.html?cat=' + catIndex + '&prod=' + prodIndex + '" class="occasion-card-link">';
         html += '<article class="' + cardClass + '">';
 
-        if (prod.imageUrl) {
+        var prodImg = safeUrl(prod.imageUrl);
+        if (prodImg) {
           html += '<div class="occasion-img">' +
-            '<img src="' + prod.imageUrl + '" alt="' + prod.brand + ' ' + prod.model + '" loading="lazy">' +
+            '<img src="' + esc(prodImg) + '" alt="' + esc(prod.brand + ' ' + prod.model) + '" loading="lazy">' +
             '</div>';
         }
 
         html += '<div class="occasion-body">' +
-          '<h3 class="occasion-brand">' + prod.brand + '</h3>' +
-          '<p class="occasion-model">' + prod.model + '</p>';
+          '<h3 class="occasion-brand">' + esc(prod.brand) + '</h3>' +
+          '<p class="occasion-model">' + esc(prod.model) + '</p>';
 
         if (prod.detail) {
-          html += '<p class="occasion-detail">' + prod.detail + '</p>';
+          html += '<p class="occasion-detail">' + esc(prod.detail) + '</p>';
         }
 
-        html += '<p class="occasion-price">' + prod.price + '</p>' +
+        html += '<p class="occasion-price">' + esc(prod.price) + '</p>' +
           '</div></article></a>';
       });
 
@@ -193,8 +202,8 @@
     document.getElementById('occasions-categories').innerHTML = html;
 
     document.getElementById('occasions-cta').innerHTML =
-      '<p>' + o.ctaText + '</p>' +
-      '<a href="#contact" class="occasions-btn">' + o.ctaButtonText + '</a>';
+      '<p>' + esc(o.ctaText) + '</p>' +
+      '<a href="#contact" class="occasions-btn">' + esc(o.ctaButtonText) + '</a>';
   }
 
   function formatDateFr(dateStr) {
@@ -225,20 +234,21 @@
 
     // Featured (latest) news
     var featured = items[0];
-    var newsImages = featured.images && featured.images.length ? featured.images : (featured.imageUrl ? [featured.imageUrl] : []);
+    var newsImages = (featured.images && featured.images.length ? featured.images : (featured.imageUrl ? [featured.imageUrl] : []))
+      .map(safeUrl).filter(Boolean);
     var hasImages = newsImages.length > 0;
     html += '<div class="news-featured animate">';
     if (hasImages) {
       html += '<div class="news-featured-img news-slideshow">';
       newsImages.forEach(function (src, idx) {
-        html += '<img src="' + src + '" alt="' + featured.title + '" loading="lazy" class="news-slide' + (idx === 0 ? ' active' : '') + '">';
+        html += '<img src="' + esc(src) + '" alt="' + esc(featured.title) + '" loading="lazy" class="news-slide' + (idx === 0 ? ' active' : '') + '">';
       });
       html += '</div>';
     }
     html += '<div class="news-featured-body' + (hasImages ? '' : ' news-featured-body-full') + '">' +
-      '<p class="news-date">' + formatDateFr(featured.date) + '</p>' +
-      '<h3 class="news-title">' + featured.title + '</h3>' +
-      '<p class="news-excerpt">' + featured.content + '</p>' +
+      '<p class="news-date">' + esc(formatDateFr(featured.date)) + '</p>' +
+      '<h3 class="news-title">' + esc(featured.title) + '</h3>' +
+      '<p class="news-excerpt">' + esc(featured.content) + '</p>' +
       '</div></div>';
 
     // Older news (up to 2)
@@ -247,8 +257,8 @@
       var limit = Math.min(items.length, 3);
       for (var i = 1; i < limit; i++) {
         html += '<div class="news-older-card animate">' +
-          '<p class="news-date">' + formatDateFr(items[i].date) + '</p>' +
-          '<h3 class="news-title">' + items[i].title + '</h3>' +
+          '<p class="news-date">' + esc(formatDateFr(items[i].date)) + '</p>' +
+          '<h3 class="news-title">' + esc(items[i].title) + '</h3>' +
           '</div>';
       }
       html += '</div>';
@@ -275,12 +285,14 @@
     var c = data.contact;
     document.getElementById('contact-title').textContent = c.sectionTitle;
 
-    var addressHtml = c.address.replace(/\n/g, '<br>');
-    var hoursHtml = c.hours.replace(/\n/g, '<br>');
+    var addressHtml = escLines(c.address);
+    var hoursHtml = escLines(c.hours);
+
+    var mapUrl = safeMapUrl(c.mapEmbedUrl);
 
     var closureHtml = '';
     if (c.closureActive && c.closureText) {
-      closureHtml = '<div class="closure-notice"><strong>Fermeture exceptionnelle</strong><br>' + c.closureText.replace(/\n/g, '<br>') + '</div>';
+      closureHtml = '<div class="closure-notice"><strong>Fermeture exceptionnelle</strong><br>' + escLines(c.closureText) + '</div>';
     }
 
     document.getElementById('contact-content').innerHTML =
@@ -296,12 +308,12 @@
         '</div>' +
         '<div class="contact-block">' +
           '<h3>Contact</h3>' +
-          '<p><a href="tel:+33' + c.phone.replace(/\s/g, '').replace(/^0/, '') + '" class="contact-link">' + c.phone + '</a></p>' +
+          '<p><a href="tel:+33' + esc(String(c.phone).replace(/[^\d]/g, '').replace(/^0/, '')) + '" class="contact-link">' + esc(c.phone) + '</a></p>' +
         '</div>' +
       '</div>' +
-      '<div class="contact-map animate">' +
-        '<iframe src="' + c.mapEmbedUrl + '" width="100%" height="100%" style="border:0; min-height: 300px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation JM Audio à Dijon"></iframe>' +
-      '</div>';
+      (mapUrl ? '<div class="contact-map animate">' +
+        '<iframe src="' + esc(mapUrl) + '" width="100%" height="100%" class="contact-map-frame" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation JM Audio à Dijon"></iframe>' +
+      '</div>' : '');
   }
 
   /* --- Contact Form (Formspree) --- */
@@ -314,7 +326,7 @@
       '<h3 class="contact-form-title">Nous écrire</h3>' +
       '<form id="contact-form" class="contact-form" action="https://formspree.io/f/xlgzwrwk" method="POST">' +
         '<input type="hidden" name="_replyto" value="">' +
-        '<input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">' +
+        '<input type="text" name="_gotcha" class="is-hidden" tabindex="-1" autocomplete="off">' +
         '<div class="form-row-contact">' +
           '<div class="form-field"><label for="cf-name">Nom</label><input type="text" id="cf-name" name="name" required autocomplete="name"></div>' +
           '<div class="form-field"><label for="cf-email">Email</label><input type="email" id="cf-email" name="email" required autocomplete="email"></div>' +
