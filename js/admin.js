@@ -50,9 +50,8 @@
   }
 
   function apiHeaders() {
-    var prefix = token.startsWith('github_pat_') ? 'Bearer' : 'token';
     return {
-      'Authorization': prefix + ' ' + token,
+      'Authorization': 'Bearer ' + token,
       'Accept': 'application/vnd.github.v3+json'
     };
   }
@@ -78,6 +77,13 @@
       showError('Veuillez saisir un token.');
       return;
     }
+    // Seul un jeton à portée fine (github_pat_) est accepté : un jeton
+    // classique est refusé avant tout appel réseau.
+    if (t.indexOf('github_pat_') !== 0) {
+      tokenInput.value = '';
+      showError('Ce jeton n\'est pas accepté. Seul un jeton GitHub à portée fine (il commence par « github_pat_ ») peut être utilisé. Voir « Comment obtenir un jeton ? » ci-dessous.');
+      return;
+    }
     hideError();
     loginBtn.textContent = 'Connexion...';
     loginBtn.disabled = true;
@@ -90,10 +96,6 @@
         loginScreen.style.display = 'none';
         adminPanel.style.display = 'block';
         populateAllForms(data);
-        if (token.indexOf('ghp_') === 0) {
-          saveStatus.textContent = 'Jeton classique : remplacez-le par un jeton à portée fine.';
-          saveStatus.className = 'save-status error';
-        }
       })
       .catch(function (err) {
         token = '';
@@ -664,13 +666,19 @@
     item.className = 'image-preview-item';
     item.dataset.img = imgPath;
     item.innerHTML =
-      '<img src="' + escAttr(imgPath) + '" alt="">' +
+      '<img src="' + escAttr(window.JMSecu.safeUrl(imgPath)) + '" alt="">' +
       '<button type="button" class="image-remove-btn" title="Supprimer">&times;</button>';
 
     item.querySelector('.image-remove-btn').addEventListener('click', function () {
+      var statusEl = productBlock.querySelector('.prod-upload-status');
+      // Seules les images téléversées par l'administration peuvent être supprimées.
+      if (!/^img\/(occasions|news)\/[A-Za-z0-9._-]+$/.test(imgPath) || imgPath.indexOf('..') !== -1) {
+        statusEl.textContent = 'Suppression refusée : chemin d\'image non reconnu.';
+        statusEl.className = 'image-upload-status prod-upload-status error';
+        return;
+      }
       if (!confirm('Supprimer cette image du repo ?')) return;
 
-      var statusEl = productBlock.querySelector('.prod-upload-status');
       statusEl.textContent = 'Suppression...';
 
       // Get the file SHA first
@@ -860,7 +868,7 @@
     item.className = 'image-preview-item';
     item.dataset.img = imgPath;
     item.innerHTML =
-      '<img src="' + escAttr(imgPath) + '" alt="">' +
+      '<img src="' + escAttr(window.JMSecu.safeUrl(imgPath)) + '" alt="">' +
       '<button type="button" class="image-remove-btn" title="Supprimer">&times;</button>';
 
     item.querySelector('.image-remove-btn').addEventListener('click', function () {
